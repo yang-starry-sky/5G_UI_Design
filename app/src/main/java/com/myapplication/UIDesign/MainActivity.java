@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
+import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tab_menu_equipment:
                 setSelected();
                 equipment.setSelected(true);
+                replaceFragment(new EquipmentFragment());
                 break;
             case R.id.tab_menu_base_station:
                 setSelected();

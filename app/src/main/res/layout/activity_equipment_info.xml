@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_deploymentStatus_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="上线状态"/>
+
+        <TextView
+            android:id="@+id/equipment_info_deploymentStatus"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_operatingStatus_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="运行状态"/>
+
+        <TextView
+            android:id="@+id/equipment_info_operatingStatus"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_time_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="上线时间"/>
+
+        <TextView
+            android:id="@+id/equipment_info_time"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_type_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="类型"/>
+
+        <TextView
+            android:id="@+id/equipment_info_type"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_vpnName_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="VpnName"/>
+
+        <TextView
+            android:id="@+id/equipment_info_vpnName"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_community_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="区"/>
+
+        <TextView
+            android:id="@+id/equipment_info_community"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_city_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="地市"/>
+
+        <TextView
+            android:id="@+id/equipment_info_city"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_UNIInterface_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="UNIInterface"/>
+
+        <TextView
+            android:id="@+id/equipment_info_UNIInterface"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/equipment_info_Remarks_label"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="备注"/>
+
+        <TextView
+            android:id="@+id/equipment_info_Remarks"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/equipment_info_deploy"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:text="部署"/>
+</TableLayout>
