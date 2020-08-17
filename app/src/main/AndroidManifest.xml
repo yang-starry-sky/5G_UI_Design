@@ -54,15 +54,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Equipment.EquipmentActivity"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="com.myapplication.UIDesign.Equipment.EquipmentActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".BaseStation.BaseStationInfoActivity">
             <intent-filter>
                 <action android:name="com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity" />
