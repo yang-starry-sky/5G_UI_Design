@@ -1,0 +1,5 @@
+<com.github.mikephil.charting.charts.PieChart android:id="@+id/pie2"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+</com.github.mikephil.charting.charts.PieChart>

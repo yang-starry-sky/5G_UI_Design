@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.myapplication.UIDesign">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Overview.zhutu">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.Overview.zhutu" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Overview.pie2">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.Overview.pie2" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Overview.pie1">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.Overview.pie1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Area.Area_Details">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.Area.Area_Details" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.myapplication.UIDesign.Area.Area_Details.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Area.AreaActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.Area.AreaActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Equipment.EquipmentActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.Equipment.EquipmentActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".BaseStation.BaseStationInfoActivity">
+            <intent-filter>
+                <action android:name="com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
