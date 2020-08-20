@@ -45,15 +45,7 @@
                 <category android:name="com.myapplication.UIDesign.Area.Area_Details.MY_CATEGORY" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Area.AreaActivity"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="com.myapplication.UIDesign.Area.AreaActivity" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".BaseStation.BaseStationInfoActivity">
             <intent-filter>
                 <action android:name="com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity" />
