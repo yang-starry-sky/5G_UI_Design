@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tab_menu_area:
                 setSelected();
                 area.setSelected(true);
+                replaceFragment(new AreaFragment());
                 break;
             case R.id.tab_menu_equipment:
                 setSelected();

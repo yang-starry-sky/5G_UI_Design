@@ -1,39 +1,40 @@
 package com.myapplication.UIDesign.Area;
 
-import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
-import com.myapplication.UIDesign.BaseStation.BaseStationItemAdapter;
 import com.myapplication.UIDesign.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AreaActivity extends AppCompatActivity {
+public class AreaFragment extends Fragment {
     private List<AreaActivityItem> areaActivityItemList=new ArrayList<>();//主界面信息
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_area1);
-        this.setTitle(getClass().getSimpleName());//设置标题
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.area_fragment, container,false);  //获取area_fragment布局
 
         InitAreaItems();//信息初始化，可以拓展成接口
         //对信息的展示
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.area_recycler_view);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.area_recycler_view);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         AreaActivityItemAdapter areaActivityItemAdapter=new AreaActivityItemAdapter(areaActivityItemList);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(areaActivityItemAdapter);
+
+        return view;
     }
 
     /**
