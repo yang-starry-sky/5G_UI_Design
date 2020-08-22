@@ -1,37 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:id="@+id/button_1"
+            android:layout_height="30dp">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="接入设备上线状态统计" />
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="接入设备上线状态统计"></TextView>
+        </LinearLayout>
 
-            <Button
-                android:id="@+id/button_2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="基站业务状态统计" />
-
-
-            <Button
-                android:id="@+id/button_3"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="资源池利用率统计" />
-
-
-
+        <fragment
+            android:id="@+id/pie11"
+            android:name="com.myapplication.UIDesign.Overview.pie1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/whitesmoke">
 
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="基站业务状态统计"></TextView>
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/pie22"
+            android:name="com.myapplication.UIDesign.Overview.pie2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/whitesmoke">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="资源池利用率统计"></TextView>
+        </LinearLayout>
+
+
+        <fragment
+            android:id="@+id/pie33"
+            android:name="com.myapplication.UIDesign.Overview.zhutu"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+
+
+
+    </LinearLayout>
+</ScrollView>
