@@ -2,5 +2,6 @@
 <com.github.mikephil.charting.charts.HorizontalBarChart android:id="@+id/bar_hor"
     android:layout_width="match_parent"
     android:layout_height="300dp"
+    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android">
 </com.github.mikephil.charting.charts.HorizontalBarChart>
