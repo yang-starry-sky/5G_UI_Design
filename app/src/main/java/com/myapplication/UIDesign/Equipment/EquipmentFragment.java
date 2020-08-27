@@ -26,7 +26,7 @@ public class EquipmentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_equipment,container,false);
 
-        InitEquipmentItems();//信息初始化，可以拓展成接口
+        InitEquipmentItems();
         //对信息的展示
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.equipment_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
@@ -37,7 +37,9 @@ public class EquipmentFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * 信息初始化，可以拓展成接口
+     */
     public void InitEquipmentItems(){
         EquipmentItem equipmentItem1=new EquipmentItem("ConcertHall-Ring1-CSG1",
                 "上线状态   Failure","运行状态   Normal",

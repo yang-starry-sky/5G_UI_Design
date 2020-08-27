@@ -25,11 +25,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         bindView();
+        setPoint();//可拓展消息提示
         initTabMenu();
         overview.setSelected(true);
         replaceFragment(new OverviewFragment());
     }
 
+    /**
+     * 点击事件，用来切换fragment
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -58,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 切换fragment
+     * @param fragment 需要切换的fragment
+     */
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
@@ -65,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransaction.commit();
     }
 
+    /**
+     * 将控件关联，并设置点击事件
+     */
     private void bindView(){
         overview=(TextView)findViewById(R.id.tab_menu_overview);
         area=(TextView)findViewById(R.id.tab_menu_area);
@@ -82,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         baseStation.setOnClickListener(this);
     }
 
+    /**
+     * 初始化图片格式
+     */
     private void initTabMenu(){
         Drawable drawable=getResources().getDrawable(R.drawable.tab_menu_overview);
         drawable.setBounds(0,0,65,65);
@@ -99,16 +114,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawable.setBounds(0,0,65,65);
         baseStation.setCompoundDrawables(null,drawable,null,null);
 
-        overview.setOnClickListener(this);
-        area.setOnClickListener(this);
-        equipment.setOnClickListener(this);
-        baseStation.setOnClickListener(this);
+        drawable=getResources().getDrawable(R.drawable.tab_menu_base_station);
+        drawable.setBounds(0,0,65,65);
+        baseStation.setCompoundDrawables(null,drawable,null,null);
     }
 
+    /**
+     * 全部设置为未选择状态
+     */
     private void setSelected(){
         overview.setSelected(false);
         area.setSelected(false);
         equipment.setSelected(false);
         baseStation.setSelected(false);
+    }
+
+    /**
+     * 设置消息提示点是否可见
+     */
+    private void setPoint(){
+        overviewPoint.setVisibility(View.VISIBLE);
+        areaPoint.setVisibility(View.VISIBLE);
+        equipmentPoint.setVisibility(View.VISIBLE);
+        baseStationPoint.setVisibility(View.VISIBLE);
     }
 }
