@@ -53,6 +53,9 @@ public class EquipmentInfoActivity extends AppCompatActivity {
         equipmentInfoItem.setType("gNodeB");
     }
 
+    /**
+     * 在设备信息展示页面上显示具体信息
+     */
     private void showInfo(){
         TextView textView=(TextView)findViewById(R.id.base_station_info_city);
         textView.setText(equipmentInfoItem.getCity());

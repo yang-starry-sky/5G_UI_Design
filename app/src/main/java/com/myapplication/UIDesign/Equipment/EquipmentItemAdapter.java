@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 设备主界面的Adapter，用来对recyclerview进行设置
+ * 设备主界面的Adapter，
+ * 使用recyclerview实现设备界面显示数量的动态改变
+ * 可进行拓展
  */
 public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdapter.ViewHolder>{
     private List<EquipmentItem> equipmentItems=new ArrayList<>();

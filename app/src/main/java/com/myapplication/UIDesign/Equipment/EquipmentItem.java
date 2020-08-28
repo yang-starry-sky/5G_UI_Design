@@ -1,5 +1,9 @@
 package com.myapplication.UIDesign.Equipment;
 
+/**
+ *此类存储单个设备的简略信息
+ * 用于设备主界面的展示
+ */
 public class EquipmentItem {
     private String name;
     private String onlineStatus;
