@@ -33,10 +33,10 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
         public ViewHolder(View view){
             super(view);
             itemView=view;
-            areaTitle=(TextView)view.findViewById(R.id.area_areaTitle);
-            modificationTime=(TextView)view.findViewById(R.id.area_modification_time);
-            creator=(TextView)view.findViewById(R.id.area_creator);
-            description=(TextView)view.findViewById(R.id.area_description);
+            areaTitle=(TextView)view.findViewById(R.id.area_areaTitle_value);
+            modificationTime=(TextView)view.findViewById(R.id.area_modification_time_value);
+            creator=(TextView)view.findViewById(R.id.area_creator_value);
+            description=(TextView)view.findViewById(R.id.area_description_value);
         }
     }
 
@@ -44,6 +44,10 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
         mAreaActivityItemList = areaActivityItemList;
     }
 
+    public void setmAreaActivityItemList(List<AreaActivityItem> mAreaActivityItemList) {
+        this.mAreaActivityItemList = mAreaActivityItemList;
+        this.notifyDataSetChanged();
+    }
 
     @NonNull
     @Override

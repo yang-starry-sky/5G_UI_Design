@@ -2,13 +2,14 @@ package com.myapplication.UIDesign.Area;
 
 public class AreaActivityItem {
 
-    private String areaTitle;
-    private String modificationTime;
-    private String creator;
-    private String description;
+    private String areaTitle;            //地区大字标题
+    private String modificationTime;     //最近修改时间
+    private String creator;              //创建者
+    private String description;          //描述
 
 
     public AreaActivityItem(String areaTitle, String modificationTime, String creator, String description){
+        //用于初始化
         this.areaTitle=areaTitle;
         this.modificationTime=modificationTime;
         this.creator=creator;
