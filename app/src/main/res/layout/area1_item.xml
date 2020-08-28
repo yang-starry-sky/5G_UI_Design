@@ -1,36 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/area_areaTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"/>
-    <TextView
-        android:id="@+id/area_modification_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"/>
-    <TextView
-        android:id="@+id/area_creator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"/>
-    <TextView
-        android:id="@+id/area_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"/>
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/area_areaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/area_creator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_time"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/area_modification_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/area_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/area_areaTitle_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/area_creator_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/area_modification_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/area_description_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp" />
+    </LinearLayout>
 </LinearLayout>
