@@ -40,9 +40,9 @@
         android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_marginLeft="15dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginLeft="15dp"
         android:orientation="vertical">
 
 
@@ -51,7 +51,7 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="@string/modify_time"
             android:textSize="20sp" />
 
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -79,20 +79,22 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingLeft="0dp"
         android:paddingRight="10dp">
 
 
-        <TextView
-            android:id="@+id/area_creator_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp" />
+
 
         <TextView
             android:id="@+id/area_modification_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/area_creator_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -104,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:textSize="20sp" />
     </LinearLayout>
     </LinearLayout>
