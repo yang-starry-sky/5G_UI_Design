@@ -20,6 +20,7 @@ import com.myapplication.UIDesign.R;
 import java.util.List;
 
 public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityItemAdapter.ViewHolder> {
+    //配置area_fragment中的信息
 
     private List<AreaActivityItem> mAreaActivityItemList;
 

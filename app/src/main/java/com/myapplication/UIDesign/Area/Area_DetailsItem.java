@@ -2,12 +2,12 @@ package com.myapplication.UIDesign.Area;
 
 public class Area_DetailsItem {
 
-    private int deviceOnline;
-    private int deviceFailure;
-    private int baseStationOnline;
-    private int baseStationFailure;
-    private int baseStationPlanning;
-    private int resourceUtilization1;
+    private int deviceOnline;        //接入设备上线状态统计 Online
+    private int deviceFailure;       //接入设备上线状态统计 Failure
+    private int baseStationOnline;   //基站业务状态统计  Online
+    private int baseStationFailure;  //基站业务状态统计  Failure
+    private int baseStationPlanning; //基站业务状态统计  Planning
+    private int resourceUtilization1;//资源池利用率
     private int resourceUtilization2;
     private int resourceUtilization3;
     private int resourceUtilization4;

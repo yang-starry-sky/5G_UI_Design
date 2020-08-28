@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 
 import com.myapplication.UIDesign.R;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AreaFragment extends Fragment {
-    private List<AreaActivityItem> areaActivityItemList=new ArrayList<>();//主界面信息
+    private List<AreaActivityItem> areaActivityItemList=new ArrayList<>();//area_Fragment信息
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,6 +34,10 @@ public class AreaFragment extends Fragment {
         AreaActivityItemAdapter areaActivityItemAdapter=new AreaActivityItemAdapter(areaActivityItemList);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(areaActivityItemAdapter);
+
+        //建立TableLayout
+        TableLayout AreaItemTable = (TableLayout)inflater.inflate(R.layout.area1_itemtable,null).findViewById(R.id.area_item_table);
+
 
         return view;
     }
