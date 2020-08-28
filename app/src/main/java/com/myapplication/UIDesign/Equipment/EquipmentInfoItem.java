@@ -1,9 +1,14 @@
 package com.myapplication.UIDesign.Equipment;
 
+/**
+ * 此类存储单个设备详细信息
+ * 用于设备信息展示界面的显示
+ */
+
 public class EquipmentInfoItem {
-    private String address;
-    private String deploymentStatus;
-    private String operatingStatus;
+    private String address;//地址（名称）
+    private String deploymentStatus;//部署状态
+    private String operatingStatus;//运行状态
     private String time;
     private String type;
     private String vpnName;

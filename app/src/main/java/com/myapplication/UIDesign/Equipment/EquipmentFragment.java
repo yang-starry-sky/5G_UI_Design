@@ -37,7 +37,9 @@ public class EquipmentFragment extends Fragment {
         return view;
     }
 
-
+    /**设备对象的初始化
+     * 可改写为方法，用于动态获取设备信息
+     */
     public void InitEquipmentItems(){
         EquipmentItem equipmentItem1=new EquipmentItem("ConcertHall-Ring1-CSG1",
                 "上线状态   Failure","运行状态   Normal",
