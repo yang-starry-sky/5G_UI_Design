@@ -3,29 +3,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:outlineAmbientShadowColor="@color/brown"
+                android:outlineSpotShadowColor="@color/aqua"
+                android:layout_marginLeft="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/circle"/>
+
+            <TextView
+                android:id="@+id/area_areaTitle_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="3dp"
+                />
+        </LinearLayout>
+
+
 
     <LinearLayout
-        android:layout_width="120dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="15dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/area_areaTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/area_creator"
-            android:layout_width="wrap_content"
+            android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:text="@string/modify_time"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:text="@string/modify_time"
             android:textSize="20sp" />
 
         <TextView
@@ -33,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:textSize="20sp" />
 
@@ -42,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:textSize="20sp" />
     </LinearLayout>
@@ -55,13 +82,6 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/area_areaTitle_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/area_creator_value"
@@ -86,5 +106,6 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:textSize="20sp" />
+    </LinearLayout>
     </LinearLayout>
 </LinearLayout>
