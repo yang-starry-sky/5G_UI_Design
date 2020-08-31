@@ -2,11 +2,13 @@ package com.myapplication.UIDesign.Area;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View itemView;
+        Button firstCharBackground;
         TextView areaTitle;
         TextView modificationTime;
         TextView creator;
@@ -33,6 +36,7 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
         public ViewHolder(View view){
             super(view);
             itemView=view;
+            firstCharBackground = (Button)view.findViewById(R.id.area_firstcharbackgroud_button);
             areaTitle=(TextView)view.findViewById(R.id.area_areaTitle_value);
             modificationTime=(TextView)view.findViewById(R.id.area_modification_time_value);
             creator=(TextView)view.findViewById(R.id.area_creator_value);
@@ -75,6 +79,7 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AreaActivityItem areaActivityItem=mAreaActivityItemList.get(position);
         holder.areaTitle.setText(areaActivityItem.getAreaTitle());
+        holder.firstCharBackground.setText(areaActivityItem.getFirstchar());
         holder.modificationTime.setText(areaActivityItem.getModificationTime());
         holder.creator.setText(areaActivityItem.getCreator());
         holder.description.setText(areaActivityItem.getDescription());
