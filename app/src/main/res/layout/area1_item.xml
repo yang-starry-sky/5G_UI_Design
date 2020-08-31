@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="15dp">
+    android:layout_marginTop="15dp">
 
 
         <LinearLayout
@@ -13,23 +12,27 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:outlineAmbientShadowColor="@color/brown"
-                android:outlineSpotShadowColor="@color/aqua"
+            <Button
+                android:id="@+id/area_firstcharbackgroud_button"
                 android:layout_marginLeft="40dp"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/circle"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:background="@drawable/area_firstcharbackground"
+                android:backgroundTint="@color/aqua"
+                />
 
             <TextView
                 android:id="@+id/area_areaTitle_value"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:paddingLeft="10dp"
+                android:layout_weight="1"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="3dp"
-                />
+                android:paddingLeft="20dp"
+                android:textSize="25dp"
+                android:visibility="visible" />
         </LinearLayout>
 
 
@@ -37,23 +40,25 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginLeft="15dp"
+
+        android:layout_marginLeft="5dp"
         android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/area_creator"
-            android:layout_width="136dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:text="@string/modify_time"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/area_modification_time"
@@ -62,7 +67,7 @@
             android:text="@string/create"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/area_description"
@@ -71,16 +76,16 @@
             android:text="@string/description"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="240dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
         android:paddingLeft="0dp"
-        android:paddingRight="10dp">
+        android:paddingRight="0dp">
 
 
 
@@ -89,25 +94,31 @@
             android:id="@+id/area_modification_time_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/area_creator_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/area_description_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/lightgrey"/>
+
 </LinearLayout>
