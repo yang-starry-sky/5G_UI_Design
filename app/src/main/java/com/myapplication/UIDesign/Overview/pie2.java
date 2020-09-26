@@ -51,7 +51,7 @@ public class pie2 extends Fragment {
         //  外侧饼图
         list_online=new ArrayList<>();
         list_online.add(new PieEntry(180,""));
-        list_online.add(new PieEntry(234-180,""));
+        list_online.add(new PieEntry(234-180,""));//空缺（白色）的弧长设置为234-180，234为一周
         PieDataSet pieDataSet1=new PieDataSet(list_online,"Online");
         PieData pieData1=new PieData(pieDataSet1);
         pie2.setData(pieData1);
