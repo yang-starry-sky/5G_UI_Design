@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.graphics.drawable.Drawable;
+import android.media.RemoteControlClient;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -14,6 +15,9 @@ import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
+import com.myapplication.UIDesign.Utils.DataUtility;
+
+import org.litepal.LitePal;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView overview,area,equipment,baseStation;
@@ -23,6 +27,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        LitePal.getDatabase();  //创建数据库
+        DataUtility.addAreaData();//填入数据
+        DataUtility.addBaseStationData();
+        DataUtility.addEquipmentData();
+
 
         bindView();
         setPoint();//可拓展消息提示

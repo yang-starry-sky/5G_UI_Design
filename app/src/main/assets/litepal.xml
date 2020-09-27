@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <dbname value="5GUIDesign" ></dbname>
+
+    <version value="1" ></version>
+
+    <list>
+        <mapping class="com.myapplication.UIDesign.Database.Area"></mapping>
+        <mapping class="com.myapplication.UIDesign.Database.BaseStation"></mapping>
+        <mapping class="com.myapplication.UIDesign.Database.Equipment"></mapping>
+    </list>
+</litepal>

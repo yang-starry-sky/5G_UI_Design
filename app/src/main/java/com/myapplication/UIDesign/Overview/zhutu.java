@@ -49,7 +49,7 @@ public class zhutu extends Fragment {
 
         barHor = (HorizontalBarChart) view.findViewById(R.id.bar_hor);
         barHor.setExtraOffsets(5, 20, 20, 20);
-        list.add(new BarEntry(5f,85f));
+        list.add(new BarEntry(5f,85f));   //柱条长度（横向）
         list.add(new BarEntry(4f,72f));
         list.add(new BarEntry(3f,65f));
         list.add(new BarEntry(2f,42f));
@@ -82,7 +82,7 @@ public class zhutu extends Fragment {
         Legend legend1=barHor.getLegend();
         List<LegendEntry> entries = new ArrayList<>();
         entries.add(new LegendEntry(
-                "南京EMBB",
+                "南京EMBB",  //地区标签
                 Legend.LegendForm.NONE,
                 16f,
                 0f,

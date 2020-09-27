@@ -31,14 +31,14 @@ public class pie1 extends Fragment {
 
         pie1_Online = (PieChart) view.findViewById(R.id.pie1_Online);
         pie1_Online.setHoleRadius(80f);//设置中间洞大小
-        pie1_Online.setCenterText("970"+"\n"+"Online"); //设置中间文字
+        pie1_Online.setCenterText("970"+"\n"+"Online"); //设置中间文字，online数值
         pie1_Online.setExtraOffsets(5, 0, 100,0 );//偏移量
         list1=new ArrayList<>();
-        list1.add(new PieEntry(97/2,""));
+        list1.add(new PieEntry(97/2,""));  //饼状图的弧长数值
         list1.add(new PieEntry(100-97/2,""));
         pie1_Online.setRotationAngle(180);
         pie1_Online.getDescription().setEnabled(false); //取消右下角描述
-        PieDataSet pieDataSet1=new PieDataSet(list1,"Online");
+        PieDataSet pieDataSet1=new PieDataSet(list1,"Online");  //通过list1输入数据
         PieData pieData1=new PieData(pieDataSet1);
         pieData1.setDrawValues(false);//是否在图上显示数值
         pieDataSet1.setColors(Color.rgb(61, 204, 166),Color.WHITE);//设置各个数据的颜色
@@ -47,10 +47,10 @@ public class pie1 extends Fragment {
 
         pie1_Failure = (PieChart) view.findViewById(R.id.pie1_Failure);
         pie1_Failure.setHoleRadius(80f);//设置中间洞大小
-        pie1_Failure.setCenterText("12"+"\n"+"Failure"); //设置中间文字
+        pie1_Failure.setCenterText("12"+"\n"+"Failure"); //设置中间文字，Failure数值
         pie1_Failure.setExtraOffsets(105, 0, 5,0 );//偏移量
         list2=new ArrayList<>();
-        list2.add(new PieEntry(12/2,""));
+        list2.add(new PieEntry(12/2,""));//弧长，因半圆，设置为Failure数值/2
         list2.add(new PieEntry(100-12/2,""));
         pie1_Failure.setRotationAngle(180);
         pie1_Failure.getDescription().setEnabled(false); //取消右下角描述

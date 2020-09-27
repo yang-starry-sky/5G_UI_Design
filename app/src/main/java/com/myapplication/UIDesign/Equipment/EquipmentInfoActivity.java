@@ -44,8 +44,8 @@ public class EquipmentInfoActivity extends AppCompatActivity {
         equipmentInfoItem=new EquipmentInfoItem(address);
         equipmentInfoItem.setCity("南京EMBB");
         equipmentInfoItem.setCommunity("雨花台区");
-        equipmentInfoItem.setDeploymentStatus("Failure");
-        equipmentInfoItem.setOperatingStatus("Normal");
+        equipmentInfoItem.setDeploymentStatus("Failure");   //这行
+        equipmentInfoItem.setOperatingStatus("Normal");     //还有这行，跟EquipmentInfoItem中的信息重复
         equipmentInfoItem.setRemarks("xxxxxxxxxxxxxxxx");
         equipmentInfoItem.setTime("2020-04-12 20:55:21");
         equipmentInfoItem.setUNIInterface("ETH 2/3/4");

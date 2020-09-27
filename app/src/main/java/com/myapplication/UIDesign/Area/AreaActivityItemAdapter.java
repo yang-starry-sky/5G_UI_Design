@@ -33,7 +33,7 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
         TextView creator;
         TextView description;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view){  //绑定控件
             super(view);
             itemView=view;
             firstCharBackground = (Button)view.findViewById(R.id.area_firstcharbackgroud_button);
