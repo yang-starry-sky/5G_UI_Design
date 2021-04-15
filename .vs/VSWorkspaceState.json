@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\src",
+    "\\app\\src\\main",
+    "\\app\\src\\main\\java",
+    "\\app\\src\\main\\java\\com",
+    "\\app\\src\\main\\java\\com\\myapplication",
+    "\\app\\src\\main\\java\\com\\myapplication\\UIDesign",
+    "\\app\\src\\main\\java\\com\\myapplication\\UIDesign\\BaseStation",
+    "\\app\\src\\main\\java\\com\\myapplication\\UIDesign\\Equipment"
+  ],
+  "SelectedNode": "\\app\\src\\main\\java\\com\\myapplication\\UIDesign\\BaseStation\\BaseStationFragment.java",
+  "PreviewInSolutionExplorer": false
+}

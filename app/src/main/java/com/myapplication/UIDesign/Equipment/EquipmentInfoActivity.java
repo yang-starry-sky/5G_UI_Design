@@ -42,6 +42,11 @@ public class EquipmentInfoActivity extends AppCompatActivity {
         String address=intent.getStringExtra("address");
         getEquipmentInfoItem(address);//根据地址获取详细信息，可拓展为接口
         this.setTitle(address);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         showInfo();//展示信息
     }
 
@@ -50,17 +55,8 @@ public class EquipmentInfoActivity extends AppCompatActivity {
      * @param address 基站地址
      */
     private void getEquipmentInfoItem(String address){
-        equipmentInfoItem=new EquipmentInfoItem(address);
-        //sendRequestWithHttpURLConnection(address);
-        equipmentInfoItem.setCity("南京EMBB");
-        equipmentInfoItem.setCommunity("雨花台区");
-        equipmentInfoItem.setDeploymentStatus("Failure");   //这行
-        equipmentInfoItem.setOperatingStatus("Normal");     //还有这行，跟EquipmentInfoItem中的信息重复
-        equipmentInfoItem.setRemarks("xxxxxxxxxxxxxxxx");
-        equipmentInfoItem.setTime("2020-04-12 20:55:21");
-        equipmentInfoItem.setUNIInterface("ETH 2/3/4");
-        equipmentInfoItem.setVpnName("eMBB");
-        equipmentInfoItem.setType("gNodeB");
+        sendRequestWithHttpURLConnection(address);
+
     }
 
     /**
@@ -74,7 +70,7 @@ public class EquipmentInfoActivity extends AppCompatActivity {
                 try {
                     OkHttpClient client=new OkHttpClient();
                     RequestBody requestBody=new FormBody.Builder().add("address",address).build();
-                    Request request=new Request.Builder().url("127.0.0.1/Equipment/getData").post(requestBody).build();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/Equipment/getData").post(requestBody).build();
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);

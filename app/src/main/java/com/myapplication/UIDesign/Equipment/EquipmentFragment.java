@@ -38,6 +38,11 @@ public class EquipmentFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_equipment,container,false);
 
         InitEquipmentItems();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         //对信息的展示
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.equipment_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
@@ -52,31 +57,7 @@ public class EquipmentFragment extends Fragment {
      * 可改写为方法，用于动态获取设备信息
      */
     public void InitEquipmentItems(){
-        //sendRequestWithHttpURLConnection();
-        EquipmentItem equipmentItem1=new EquipmentItem("ConcertHall-Ring1-CSG1",
-                "上线状态   Failure","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        equipmentItems.add(equipmentItem1);
-        EquipmentItem equipmentItem2=new EquipmentItem("ConcertHall-Ring1-CSG2",
-                "上线状态   Online","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        equipmentItems.add(equipmentItem2);
-        EquipmentItem equipmentItem3=new EquipmentItem("ConcertHall-Ring1-CSG3",
-                "上线状态   Online","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        equipmentItems.add(equipmentItem3);
-        EquipmentItem equipmentItem4=new EquipmentItem("ConcertHall-Ring1-CSG4",
-                "上线状态   Online","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        equipmentItems.add(equipmentItem4);
-        EquipmentItem equipmentItem5=new EquipmentItem("ConcertHall-Ring1-CSG5",
-                "上线状态   Online","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        equipmentItems.add(equipmentItem5);
-        EquipmentItem equipmentItem6=new EquipmentItem("ConcertHall-Ring1-CSG6",
-                "上线状态   Online","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        equipmentItems.add(equipmentItem6);
+        sendRequestWithHttpURLConnection();
     }
     /**
      * 向服务器发送初始化请求
@@ -87,11 +68,11 @@ public class EquipmentFragment extends Fragment {
             public void run() {
                 try {
                     OkHttpClient client=new OkHttpClient();
-                    Request request=new Request.Builder().url("127.0.0.1/Equipment/init").build();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/Equipment/init").build();
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);
-                    //parseJsonWithJsonObject(responseData);
+                    parseJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }

@@ -46,9 +46,15 @@ public class BaseStationFragment extends Fragment {
 
         InitBaseStationItems();//信息初始化，可以拓展成接口
         //对信息的展示
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.base_station_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+        //System.out.println(baseStationItems.get(0).getAddress());
         BaseStationItemAdapter baseStationItemAdapter=new BaseStationItemAdapter(baseStationItems);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(baseStationItemAdapter);
@@ -59,31 +65,7 @@ public class BaseStationFragment extends Fragment {
      * 简单地初始化信息
      */
     public void InitBaseStationItems() {
-        //sendRequestWithHttpURLConnection();
-        BaseStationItem baseStationItem1=new BaseStationItem("CentralPark-Ring1-gNodeB1",
-                "上线状态   Failure","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        baseStationItems.add(baseStationItem1);
-        BaseStationItem baseStationItem2=new BaseStationItem("CentralPark-Ring1-gNodeB2",
-                "上线状态   Online","运行状态   Normal",
-                "上线时间   2020-04-12 20:55:21");
-        baseStationItems.add(baseStationItem2);
-        BaseStationItem baseStationItem3=new BaseStationItem("CentralPark-Ring1-gNodeB3",
-                "上线状态   Planning","运行状态   Unknown",
-                "上线时间   2020-04-12 20:55:21");
-        baseStationItems.add(baseStationItem3);
-        BaseStationItem baseStationItem4=new BaseStationItem("CentralPark-Ring1-gNodeB4",
-                "上线状态   Planning","运行状态   Unknown",
-                "上线时间   2020-04-12 20:55:21");
-        baseStationItems.add(baseStationItem4);
-        BaseStationItem baseStationItem5=new BaseStationItem("CentralPark-Ring1-gNodeB5",
-                "上线状态   Planning","运行状态   Unknown",
-                "上线时间   2020-04-12 20:55:21");
-        baseStationItems.add(baseStationItem5);
-        BaseStationItem baseStationItem6=new BaseStationItem("CentralPark-Ring1-gNodeB6",
-                "上线状态   Planning","运行状态   Unknown",
-                "上线时间   2020-04-12 20:55:21");
-        baseStationItems.add(baseStationItem6);
+        sendRequestWithHttpURLConnection();
     }
     /**
      * 向服务器发送初始化请求
@@ -94,11 +76,11 @@ public class BaseStationFragment extends Fragment {
             public void run() {
                 try {
                     OkHttpClient client=new OkHttpClient();
-                    Request request=new Request.Builder().url("127.0.0.1/BaseStation/init").build();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/BaseStation/init").build();
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);
-                    //parseJsonWithJsonObject(responseData);
+                    parseJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -120,6 +102,7 @@ public class BaseStationFragment extends Fragment {
                 String time=jsonObject.getString("time");
                 BaseStationItem baseStationItem=new BaseStationItem(address,deploymentStatus,operatingStatus,time);
                 baseStationItems.add(baseStationItem);
+                //System.out.println(i+" "+baseStationItem.getAddress());
             }
         }catch (Exception e){
             e.printStackTrace();

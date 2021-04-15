@@ -32,6 +32,11 @@ public class BaseStationInfoActivity extends AppCompatActivity {
         String address=intent.getStringExtra("address");
         getBaseStationInfoItem(address);//根据地址获取详细信息，可拓展为接口
         this.setTitle(address);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         showInfo();//展示信息
     }
 
@@ -41,16 +46,7 @@ public class BaseStationInfoActivity extends AppCompatActivity {
      */
     private void getBaseStationInfoItem(String address){
         baseStationInfoItem=new BaseStationInfoItem(address);
-        //sendRequestWithHttpURLConnection(address);
-        baseStationInfoItem.setCity("南京EMBB");
-        baseStationInfoItem.setCommunity("雨花台区");
-        baseStationInfoItem.setDeploymentStatus("Failure");
-        baseStationInfoItem.setOperatingStatus("Normal");
-        baseStationInfoItem.setRemarks("xxxxxxxxxxxxxxxx");
-        baseStationInfoItem.setTime("2020-04-12 20:55:21");
-        baseStationInfoItem.setUNIInterface("ETH 2/3/4");
-        baseStationInfoItem.setVpnName("eMBB");
-        baseStationInfoItem.setType("gNodeB");
+        sendRequestWithHttpURLConnection(address);
     }
     /**
      * post方法根据address获取详细信息
@@ -63,11 +59,11 @@ public class BaseStationInfoActivity extends AppCompatActivity {
                 try {
                     OkHttpClient client=new OkHttpClient();
                     RequestBody requestBody=new FormBody.Builder().add("address",address).build();
-                    Request request=new Request.Builder().url("127.0.0.1/BaseStation/getData").post(requestBody).build();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/BaseStation/getData").post(requestBody).build();
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);
-                    //parseJsonWithJsonObject(responseData);
+                    parseJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -81,15 +77,15 @@ public class BaseStationInfoActivity extends AppCompatActivity {
     private void parseJsonWithJsonObject(String jsonData){
         try {
             JSONObject jsonObject=new JSONObject(jsonData);
-            String city=jsonObject.getString("city");
-            String community=jsonObject.getString("community");
-            String operatingStatus=jsonObject.getString("operatingStatus");
-            String time=jsonObject.getString("time");
-            String deploymentStatus=jsonObject.getString("deploymentStatus");
-            String remarks=jsonObject.getString("remarks");
-            String UNIInterface=jsonObject.getString("UNIInterface");
-            String vpnName=jsonObject.getString("vpnName");
-            String type=jsonObject.getString("type");
+            String city=jsonObject.get("city").toString();
+            String community=jsonObject.get("community").toString();
+            String operatingStatus=jsonObject.get("operatingStatus").toString();
+            String time=jsonObject.get("time").toString();
+            String deploymentStatus=jsonObject.get("deploymentStatus").toString();
+            String remarks=jsonObject.get("remarks").toString();
+            String UNIInterface=jsonObject.get("uniinterface").toString();
+            String vpnName=jsonObject.get("vpnName").toString();
+            String type=jsonObject.get("type").toString();
             baseStationInfoItem.setCity(city);
             baseStationInfoItem.setCommunity(community);
             baseStationInfoItem.setDeploymentStatus(deploymentStatus);
