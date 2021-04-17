@@ -18,7 +18,7 @@ public class OverviewFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_overview,container,false);
-
+        getActivity().setTitle("概览");//改变标题
         return view;
     }
 }
