@@ -50,6 +50,7 @@ public class EquipmentFragment extends Fragment {
         EquipmentItemAdapter equipmentItemAdapter=new EquipmentItemAdapter(equipmentItems);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(equipmentItemAdapter);
+        getActivity().setTitle("设备");//改变标题
         return view;
     }
 
