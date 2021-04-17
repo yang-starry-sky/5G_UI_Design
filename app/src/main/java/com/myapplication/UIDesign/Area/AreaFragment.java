@@ -3,6 +3,7 @@ package com.myapplication.UIDesign.Area;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,6 +22,7 @@ import com.myapplication.UIDesign.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ import okhttp3.Response;
 public class AreaFragment extends Fragment {
     RecyclerView recyclerView;
     AreaActivityItemAdapter adapter;
+
 
     private List<AreaActivityItem> areaActivityItemList=new ArrayList<>();//主界面信息
 
@@ -46,6 +50,9 @@ public class AreaFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         InitAreaItems();
         //对信息的展示
+        
+
+        getActivity().setTitle("区域");//改变标题
         return view;
     }
 

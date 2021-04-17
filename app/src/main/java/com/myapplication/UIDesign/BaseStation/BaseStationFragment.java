@@ -58,6 +58,7 @@ public class BaseStationFragment extends Fragment {
         BaseStationItemAdapter baseStationItemAdapter=new BaseStationItemAdapter(baseStationItems);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(baseStationItemAdapter);
+        getActivity().setTitle("基站");//改变标题
         return view;
     }
 

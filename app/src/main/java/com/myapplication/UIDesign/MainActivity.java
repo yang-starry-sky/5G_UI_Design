@@ -1,5 +1,6 @@
 package com.myapplication.UIDesign;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.graphics.drawable.Drawable;
 import android.media.RemoteControlClient;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         overview.setSelected(true);
         replaceFragment(new OverviewFragment());
     }
+
+
+
 
     /**
      * 点击事件，用来切换fragment

@@ -16,4 +16,9 @@
         <item name="android:textSize">12sp</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
