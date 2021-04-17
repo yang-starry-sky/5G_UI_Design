@@ -1,28 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp">
+            android:layout_height="35dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:text="接入设备上线状态统计"></TextView>
+                android:textSize="24sp"
+                android:typeface="sans"
+                android:text="@string/join">
+            </TextView>
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/pie11"
-            android:name="com.myapplication.UIDesign.Overview.pie1"
+        <LinearLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="200dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            >
+
+        <fragment
+            android:id="@+id/pie1_Online"
+            android:name="com.myapplication.UIDesign.Overview.pie1_Online"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            tools:layout="@layout/pie1_online_layout"
+            />
+
+        <fragment
+            android:id="@+id/pie1_Failure"
+            android:name="com.myapplication.UIDesign.Overview.pie1_Failure"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/pie1_failure_layout"
+            />
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
@@ -31,20 +57,53 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp">
+            android:layout_height="35dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:text="基站业务状态统计"></TextView>
+                android:textSize="24sp"
+                android:typeface="sans"
+                android:text="@string/basestation">
+
+            </TextView>
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/pie22"
-            android:name="com.myapplication.UIDesign.Overview.pie2"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:baselineAligned="false"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+
+            <fragment
+                android:id="@+id/pie2"
+                android:name="com.myapplication.UIDesign.Overview.pie2_station"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                tools:layout="@layout/pie2_station_layout"
+                />
+
+            <fragment
+            android:id="@+id/legend"
+            android:name="com.myapplication.UIDesign.Overview.pie2_legend_text"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            tools:layout="@layout/pie2_legend_layout"
+            />
+
+
+
+    </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
@@ -52,23 +111,30 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp">
+            android:layout_height="35dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:text="资源池利用率统计"></TextView>
+                android:textSize="24sp"
+                android:typeface="sans"
+                android:text="@string/sourcepool">
+            </TextView>
         </LinearLayout>
-
-
-        <fragment
-            android:id="@+id/pie33"
-            android:name="com.myapplication.UIDesign.Overview.zhutu"
+        <RelativeLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
-
-
+            android:layout_height="350dp"
+            >
+        <fragment
+            android:id="@+id/bar_hor"
+            android:name="com.myapplication.UIDesign.Overview.histogram"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            tools:layout="@layout/histogram_layout"
+            />
+        </RelativeLayout>
 
 
     </LinearLayout>

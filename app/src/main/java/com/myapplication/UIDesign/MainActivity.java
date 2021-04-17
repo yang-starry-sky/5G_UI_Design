@@ -17,16 +17,20 @@ import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
+import com.myapplication.UIDesign.Overview.graphicinfoitem;
 import com.myapplication.UIDesign.Utils.DataUtility;
 
 import org.litepal.LitePal;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    public static graphicinfoitem graphicdata;
     private TextView overview,area,equipment,baseStation;
     private TextView overviewPoint,areaPoint,equipmentPoint,baseStationPoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setgraphicData();//图形化数据传入接口
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -152,5 +156,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         areaPoint.setVisibility(View.VISIBLE);
         equipmentPoint.setVisibility(View.VISIBLE);
         baseStationPoint.setVisibility(View.VISIBLE);
+    }
+    private void setgraphicData()
+    {
+        graphicdata = new graphicinfoitem(970, 12, 180, 4, 50, 85, 72, 65, 42, 15);
     }
 }

@@ -3,4 +3,26 @@
     <string name="modify_time">最近修改时间</string>
     <string name="create">创建者</string>
     <string name="description">描述</string>
+    <string name="online">Online</string>
+    <string name="failure">Failure</string>
+    <string name="planning">Planning</string>
+    <string name="total">Total</string>
+    <string name="join">接入设备上线状态统计</string>
+    <string name="basestation">基站业务状态统计</string>
+    <string name="sourcepool">资源池利用率统计</string>
+    <string name="st1">南京EMBB</string>
+    <string name="st2">常州EMBB</string>
+    <string name="st3">无锡EMBB</string>
+    <string name="st4">南京IPTV</string>
+    <string name="st5">常州IPTV</string>
+    <string name="title_activity_test">test</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>

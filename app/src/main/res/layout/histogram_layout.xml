@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+tools:context=".MainActivity" >
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:typeface="sans"
+    android:text="@string/st1"
+    android:textColor="@color/gray"
+    android:textSize="16sp"
+    android:layout_marginTop="13dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginStart="15dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="sans"
+        android:text="@string/st2"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_marginTop="77dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="sans"
+        android:text="@string/st3"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="sans"
+        android:text="@string/st4"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_marginTop="205dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="sans"
+        android:text="@string/st5"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_marginTop="269dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+    <com.github.mikephil.charting.charts.HorizontalBarChart android:id="@+id/bar_hor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</FrameLayout>
