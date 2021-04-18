@@ -74,7 +74,7 @@ public class EquipmentInfoActivity extends AppCompatActivity {
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);
-                    //parseJsonWithJsonObject(responseData);
+                    parseJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
