@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
+import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentInfoItem;
 import com.myapplication.UIDesign.Equipment.EquipmentItem;
@@ -22,6 +23,7 @@ import com.myapplication.UIDesign.Overview.GraphicInfoItem;
 import com.myapplication.UIDesign.Utils.DataUtility;
 
 import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
 
 import java.util.List;
 
@@ -201,4 +203,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GraphicInfoItem graphicdata1=gson.fromJson(jsonData,GraphicInfoItem.class);
         graphicdata=graphicdata1;
     }
+
+
 }

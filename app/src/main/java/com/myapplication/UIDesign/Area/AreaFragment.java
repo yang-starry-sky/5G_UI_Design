@@ -9,34 +9,46 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.R;
+import com.myapplication.UIDesign.Utils.HttpUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class AreaFragment extends Fragment {
     RecyclerView recyclerView;
     AreaActivityItemAdapter adapter;
 
 
-    private List<AreaActivityItem> areaActivityItemList=new ArrayList<>();//主界面信息
+    private List<Area> areaActivityItemList=new ArrayList<>();//主界面信息
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,25 +62,40 @@ public class AreaFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         InitAreaItems();
         //对信息的展示
-        
+
 
         getActivity().setTitle("区域");//改变标题
         return view;
     }
 
+
+
+
+
     /**
      * 简单地初始化信息
      */
+    private List<Area> areaList;
     public void InitAreaItems(){
+        areaList = DataSupport.findAll(Area.class);
         sendRequestWithHttpURLConnection();
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if(areaList.size() > 0){
+            areaActivityItemList.clear();
+            for(Area area : areaList){
+                areaActivityItemList.add(area);
+            }
+
+        }else{
+            sendRequestWithHttpURLConnection();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
-
+        adapter.notifyDataSetChanged();
         adapter.setmAreaActivityItemList(areaActivityItemList);
-
     }
 
     /**
@@ -98,8 +125,28 @@ public class AreaFragment extends Fragment {
      */
     private void parseJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
-        List<AreaActivityItem> areaActivityItemList1=gson.fromJson(jsonData,new TypeToken<List<AreaActivityItem>>(){}.getType());
+        List<Area> areaActivityItemList1=gson.fromJson(jsonData,new TypeToken<List<Area>>(){}.getType());
         areaActivityItemList=areaActivityItemList1;
+
+        //持久化
+        for(int i = 0; i < areaActivityItemList.size(); i++ ){
+            Area area = new Area();
+            area.setFirstchar(areaActivityItemList.get(i).getFirstchar());
+            area.setAreaTitle(areaActivityItemList.get(i).getAreaTitle());
+            area.setCreator(areaActivityItemList.get(i).getCreator());
+            area.setModificationTime(areaActivityItemList.get(i).getModificationTime());
+            area.setDescription(areaActivityItemList.get(i).getDescription());
+            area.save();
+        }
         adapter.setmAreaActivityItemList(areaActivityItemList);
     }
+
+
+
+
+
+
+
+
+
 }

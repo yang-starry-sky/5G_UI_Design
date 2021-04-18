@@ -13,10 +13,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.myapplication.UIDesign.Database.Area;
+import com.myapplication.UIDesign.Database.BaseStation;
+import com.myapplication.UIDesign.Database.Equipment;
+import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,8 +44,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class BaseStationFragment extends Fragment {
-    private List<BaseStationItem> baseStationItems=new ArrayList<>();//主界面信息
-
+    private List<BaseStation> baseStationItems=new ArrayList<>();//主界面信息
+    BaseStationItemAdapter baseStationItemAdapter=new BaseStationItemAdapter(baseStationItems);
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,7 +62,7 @@ public class BaseStationFragment extends Fragment {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         //System.out.println(baseStationItems.get(0).getAddress());
-        BaseStationItemAdapter baseStationItemAdapter=new BaseStationItemAdapter(baseStationItems);
+
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(baseStationItemAdapter);
         getActivity().setTitle("基站");//改变标题
@@ -65,8 +72,27 @@ public class BaseStationFragment extends Fragment {
     /**
      * 简单地初始化信息
      */
+    private List<BaseStation> baseStationList;
     public void InitBaseStationItems() {
+
+        baseStationList = DataSupport.findAll(BaseStation.class);
         sendRequestWithHttpURLConnection();
+        if(baseStationList.size() > 0){
+            baseStationItems.clear();
+            for(BaseStation baseStation : baseStationList){
+                baseStationItems.add(baseStation);
+            }
+
+        }else{
+            sendRequestWithHttpURLConnection();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        baseStationItemAdapter.notifyDataSetChanged();
+        baseStationItemAdapter.setmBaseStationItemList(baseStationItems);
     }
     /**
      * 向服务器发送初始化请求
@@ -93,20 +119,35 @@ public class BaseStationFragment extends Fragment {
      * @param jsonData 服务器返回的json格式数据
      */
     private void parseJsonWithJsonObject(String jsonData){
-        try {
-            JSONArray jsonArray=new JSONArray(jsonData);
-            for(int i=0;i<jsonArray.length();i++){
-                JSONObject jsonObject=jsonArray.getJSONObject(i);
-                String address=jsonObject.getString("address");
-                String deploymentStatus=jsonObject.getString("deploymentStatus");
-                String operatingStatus=jsonObject.getString("operatingStatus");
-                String time=jsonObject.getString("time");
-                BaseStationItem baseStationItem=new BaseStationItem(address,deploymentStatus,operatingStatus,time);
-                baseStationItems.add(baseStationItem);
-                //System.out.println(i+" "+baseStationItem.getAddress());
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+//        try {
+//            JSONArray jsonArray=new JSONArray(jsonData);
+//            for(int i=0;i<jsonArray.length();i++){
+//                JSONObject jsonObject=jsonArray.getJSONObject(i);
+//                String address=jsonObject.getString("address");
+//                String deploymentStatus=jsonObject.getString("deploymentStatus");
+//                String operatingStatus=jsonObject.getString("operatingStatus");
+//                String time=jsonObject.getString("time");
+//                BaseStationItem baseStationItem=new BaseStationItem(address,deploymentStatus,operatingStatus,time);
+//                baseStationItems.add(baseStationItem);
+//                //System.out.println(i+" "+baseStationItem.getAddress());
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+        Gson gson=new Gson();
+        List<BaseStation> baseStationItems1=gson.fromJson(jsonData, new TypeToken<List<BaseStationItem>>(){}.getType());
+        baseStationItems=baseStationItems1;
+
+        //持久化
+        for(int i = 0; i < baseStationItems.size(); i++ ){
+            BaseStation baseStation = new BaseStation();
+            baseStation.setAddress(baseStationItems.get(i).getAddress());
+            baseStation.setDeploymentStatus(baseStationItems.get(i).getDeploymentStatus());
+            baseStation.setOperatingStatus(baseStationItems.get(i).getOperatingStatus());
+            baseStation.setTime(baseStationItems.get(i).getTime());
+            baseStation.save();
         }
+        baseStationItemAdapter.setmBaseStationItemList(baseStationItems);
+
     }
 }
