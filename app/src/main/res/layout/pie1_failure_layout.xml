@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.github.mikephil.charting.charts.PieChart android:id="@+id/pie1_Failure"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:typeface="sans"
+        android:text="@string/failure"
+        android:textColor="@color/gray"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:paddingTop="60dp"
+        />
+
+</RelativeLayout>
