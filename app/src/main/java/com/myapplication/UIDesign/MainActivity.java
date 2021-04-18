@@ -1,29 +1,36 @@
 package com.myapplication.UIDesign;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.graphics.drawable.Drawable;
-import android.media.RemoteControlClient;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
+import com.myapplication.UIDesign.Equipment.EquipmentInfoItem;
+import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
-import com.myapplication.UIDesign.Overview.graphicinfoitem;
+import com.myapplication.UIDesign.Overview.GraphicInfoItem;
 import com.myapplication.UIDesign.Utils.DataUtility;
 
 import org.litepal.LitePal;
 
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    public static graphicinfoitem graphicdata;
+    public static GraphicInfoItem graphicdata;
     private TextView overview,area,equipment,baseStation;
     private TextView overviewPoint,areaPoint,equipmentPoint,baseStationPoint;
 
@@ -31,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         setgraphicData();//图形化数据传入接口
 
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -159,6 +171,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void setgraphicData()
     {
-        graphicdata = new graphicinfoitem(970, 12, 180, 4, 50, 85, 72, 65, 42, 15);
+        sendRequestWithHttpURLConnection();
+    }
+
+    /**
+     * 向服务器发送初始化请求
+     */
+    private void sendRequestWithHttpURLConnection(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/Overview/init").build();
+                    Response response=client.newCall(request).execute();
+                    String responseData=response.body().string();
+                    System.out.println(responseData);
+                    parseJsonWithJsonObject(responseData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    /**
+     * 解析json格式数据
+     * @param jsonData 服务器返回的json格式数据
+     */
+    private void parseJsonWithJsonObject(String jsonData){
+        Gson gson=new Gson();
+        GraphicInfoItem graphicdata1=gson.fromJson(jsonData,GraphicInfoItem.class);
+        graphicdata=graphicdata1;
     }
 }
