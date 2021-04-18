@@ -28,7 +28,7 @@ public class Area extends DataSupport {
 
 
     public String getFirstchar() {
-        return String.valueOf(firstchar);
+        return firstchar;
     }
 
     public String getAreaTitle() {

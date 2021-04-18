@@ -53,6 +53,10 @@ public class BaseStation extends DataSupport {
         this.vpnName = vpnName;
     }
 
+    public String getAddress(){
+        return address;
+    }
+
     public String getTime() {
         return time;
     }

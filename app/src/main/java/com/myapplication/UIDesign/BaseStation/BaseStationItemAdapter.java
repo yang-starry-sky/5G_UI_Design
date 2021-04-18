@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.myapplication.UIDesign.Database.Area;
+import com.myapplication.UIDesign.Database.BaseStation;
 import com.myapplication.UIDesign.R;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.List;
  * 基站主界面的Adapter，用来对recyclerview进行设置
  */
 public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItemAdapter.ViewHolder>{
-    private List<BaseStationItem> baseStationItems=new ArrayList<>();
+    private List<BaseStation> baseStationItems=new ArrayList<>();
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View itemView;
@@ -39,8 +41,13 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
         }
     }
 
-    public BaseStationItemAdapter(List<BaseStationItem> baseStationItems){
+    public BaseStationItemAdapter(List<BaseStation> baseStationItems){
         this.baseStationItems=baseStationItems;
+    }
+
+    public void setmBaseStationItemList(List<BaseStation> mBaseStationItemList) {
+        this.baseStationItems = mBaseStationItemList;
+        this.notifyDataSetChanged();
     }
 
     @NonNull
@@ -52,7 +59,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
             @Override
             public void onClick(View view) {
                 int position=viewHolder.getAdapterPosition();
-                BaseStationItem baseStationItem=baseStationItems.get(position);
+                BaseStation baseStationItem=baseStationItems.get(position);
                 Intent intent=new Intent("com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity");
                 intent.putExtra("address",baseStationItem.getAddress());
                 ((Activity) view.getContext()).startActivity(intent);
@@ -76,7 +83,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BaseStationItem baseStationItem=baseStationItems.get(position);
+        BaseStation baseStationItem=baseStationItems.get(position);
         holder.address.setText(baseStationItem.getAddress());
         holder.operatingStatus.setText(baseStationItem.getOperatingStatus());
         holder.deploymentStatus.setText(baseStationItem.getDeploymentStatus());
