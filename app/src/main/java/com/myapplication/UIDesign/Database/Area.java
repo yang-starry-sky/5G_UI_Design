@@ -5,7 +5,7 @@ import org.litepal.crud.DataSupport;
 
 //利用LitePal创建关系数据库，把数据写入数据库，然后写接口，方便数据被调用
 public class Area extends DataSupport {
-    private char firstchar;              //地区首字
+    private String firstchar;              //地区首字
     private String areaTitle;            //地区大字标题
     private String modificationTime;     //最近修改时间
     private String creator;              //创建者
@@ -47,7 +47,7 @@ public class Area extends DataSupport {
         return description;
     }
 
-    public void setFirstchar(char firstchar) {
+    public void setFirstchar(String firstchar) {
         this.firstchar = firstchar;
     }
 

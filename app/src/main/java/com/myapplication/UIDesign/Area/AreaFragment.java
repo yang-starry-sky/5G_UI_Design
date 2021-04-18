@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +20,12 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -31,11 +35,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static android.content.ContentValues.TAG;
+
 public class AreaFragment extends Fragment {
     RecyclerView recyclerView;
     AreaActivityItemAdapter adapter;
 
-
+    private List<Area> AllAreaList;
     private List<AreaActivityItem> areaActivityItemList=new ArrayList<>();//主界面信息
 
     @Override
@@ -54,6 +60,19 @@ public class AreaFragment extends Fragment {
 
         getActivity().setTitle("区域");//改变标题
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        queryAllAreas();
+    }
+
+    private void queryAllAreas(){
+        AllAreaList = DataSupport.findAll(Area.class);
+        if (AllAreaList.size() > 0){
+
+        }
     }
 
     /**
