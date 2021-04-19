@@ -14,17 +14,22 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
+import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.Database.Area;
+import com.myapplication.UIDesign.Database.BaseStation;
+import com.myapplication.UIDesign.Database.Equipment;
+import com.myapplication.UIDesign.Database.Graph;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentInfoItem;
 import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
 import com.myapplication.UIDesign.Overview.GraphicInfoItem;
-import com.myapplication.UIDesign.Utils.DataUtility;
+//import com.myapplication.UIDesign.Utils.DataUtility;
 
 import org.litepal.LitePal;
 import org.litepal.crud.DataSupport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -32,13 +37,24 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    public static GraphicInfoItem graphicdata;
+    public static Graph graphicdata;
+    public List<Area> areaList = new ArrayList<>();
+    public List<BaseStation> baseStationList= new ArrayList<>();
+    public List<Equipment> equipmentList = new ArrayList<>();
+
     private TextView overview,area,equipment,baseStation;
     private TextView overviewPoint,areaPoint,equipmentPoint,baseStationPoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setgraphicData();//图形化数据传入接口
+
+        //发请求
+        sendAreaRequest();
+        sendBaseStationRequest();
+        sendEquipmentRequest();
+
+
 
         try {
             Thread.sleep(100);
@@ -49,9 +65,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         LitePal.getDatabase();  //创建数据库
-        DataUtility.addAreaData();//填入数据
-        DataUtility.addBaseStationData();
-        DataUtility.addEquipmentData();
+//        DataUtility.addAreaData();//填入数据
+//        DataUtility.addBaseStationData();
+//        DataUtility.addEquipmentData();
 
 
         bindView();
@@ -216,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);
-                    parseJsonWithJsonObject(responseData);
+                    parseGraphJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -227,10 +243,125 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 解析json格式数据
      * @param jsonData 服务器返回的json格式数据
      */
-    private void parseJsonWithJsonObject(String jsonData){
+    private void parseGraphJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
-        GraphicInfoItem graphicdata1=gson.fromJson(jsonData,GraphicInfoItem.class);
+        Graph graphicdata1=gson.fromJson(jsonData,Graph.class);
         graphicdata=graphicdata1;
+
+        //持久化
+        Graph graph = new Graph();
+        graph.setEquipmentonline(graphicdata.getEquipmentonline());
+        graph.setEquipmentfailure(graphicdata.getEquipmentfailure());
+        graph.setStationonline(graphicdata.getStationonline());
+        graph.setStationfailure(graphicdata.getStationfailure());
+        graph.setStationplanning(graphicdata.getStationplanning());
+        graph.setPercent1(graphicdata.getPercent1());
+        graph.setPercent2(graphicdata.getPercent2());
+        graph.setPercent3(graphicdata.getPercent3());
+        graph.setPercent4(graphicdata.getPercent4());
+        graph.setPercent5(graphicdata.getPercent5());
+        graph.save();
+    }
+
+    private void sendAreaRequest(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/Area/init").build();
+                    Response response=client.newCall(request).execute();
+                    String responseData=response.body().string();
+                    System.out.println(responseData);
+                    parseAreaJsonWithJsonObject(responseData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void parseAreaJsonWithJsonObject(String jsonData){
+        Gson gson=new Gson();
+        areaList=gson.fromJson(jsonData,new TypeToken<List<Area>>(){}.getType());
+
+        //持久化
+        for(int i = 0; i < areaList.size(); i++ ){
+            Area area = new Area();
+            area.setFirstchar(areaList.get(i).getFirstchar());
+            area.setAreaTitle(areaList.get(i).getAreaTitle());
+            area.setCreator(areaList.get(i).getCreator());
+            area.setModificationTime(areaList.get(i).getModificationTime());
+            area.setDescription(areaList.get(i).getDescription());
+            area.save();
+        }
+    }
+
+    private void sendBaseStationRequest(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/BaseStation/init").build();
+                    Response response=client.newCall(request).execute();
+                    String responseData=response.body().string();
+                    System.out.println(responseData);
+                    parseBaseStationJsonWithJsonObject(responseData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private void parseBaseStationJsonWithJsonObject(String jsonData){
+        Gson gson=new Gson();
+        baseStationList=gson.fromJson(jsonData, new TypeToken<List<BaseStationItem>>(){}.getType());
+
+
+        //持久化
+        for(int i = 0; i < baseStationList.size(); i++ ){
+            BaseStation baseStation = new BaseStation();
+            baseStation.setAddress(baseStationList.get(i).getAddress());
+            baseStation.setDeploymentStatus(baseStationList.get(i).getDeploymentStatus());
+            baseStation.setOperatingStatus(baseStationList.get(i).getOperatingStatus());
+            baseStation.setTime(baseStationList.get(i).getTime());
+            baseStation.save();
+        }
+    }
+
+    private void sendEquipmentRequest(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/Equipment/init").build();
+                    Response response=client.newCall(request).execute();
+                    String responseData=response.body().string();
+                    System.out.println(responseData);
+                    parseEquipmentJsonWithJsonObject(responseData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private void parseEquipmentJsonWithJsonObject(String jsonData){
+        Gson gson=new Gson();
+         equipmentList=gson.fromJson(jsonData,new TypeToken<List<EquipmentItem>>(){}.getType());
+
+
+        //持久化
+        for(int i = 0; i < equipmentList.size(); i++){
+            Equipment equipment = new Equipment();
+            equipment.setName(equipmentList.get(i).getName());
+            equipment.setOnlineStatus(equipmentList.get(i).getOnlineStatus());
+            equipment.setOperatingStatus(equipmentList.get(i).getOperatingStatus());
+            equipment.setTime(equipmentList.get(i).getTime());
+            equipment.save();
+            //目前页面只有这四个数据
+        }
     }
 
 

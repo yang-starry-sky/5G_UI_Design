@@ -66,7 +66,13 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
             @Override
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
-                Area areaActivityItem=mAreaActivityItemList.get(position);
+                Area areaActivityItem;
+                if(position >= 0){
+                    areaActivityItem=mAreaActivityItemList.get(position);
+                } else {
+                    areaActivityItem = new Area();
+                }
+
                 Intent intent=new Intent("com.myapplication.UIDesign.Area.Area_Details");
                 intent.addCategory("com.myapplication.UIDesign.Area.Area_Details.MY_CATEGORY");
 

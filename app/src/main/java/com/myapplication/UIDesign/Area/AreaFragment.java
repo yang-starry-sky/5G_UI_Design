@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,6 +28,7 @@ import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.R;
 import com.myapplication.UIDesign.Utils.HttpUtil;
+import com.myapplication.UIDesign.Utils.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -72,6 +76,8 @@ public class AreaFragment extends Fragment {
 
 
 
+
+
     /**
      * 简单地初始化信息
      */
@@ -79,12 +85,11 @@ public class AreaFragment extends Fragment {
     public void InitAreaItems(){
         areaList = DataSupport.findAll(Area.class);
         sendRequestWithHttpURLConnection();
-        if(areaList.size() > 0){
+        if(!Utility.netWorkCheck(this.getContext())){ //没联网则用数据库数据
             areaActivityItemList.clear();
             for(Area area : areaList){
                 areaActivityItemList.add(area);
             }
-
         }else{
             sendRequestWithHttpURLConnection();
             try {
