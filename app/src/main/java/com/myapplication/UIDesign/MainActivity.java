@@ -69,21 +69,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tab_menu_overview:
+                clearOverviewPoint();
                 setSelected();
                 overview.setSelected(true);
                 replaceFragment(new OverviewFragment());
                 break;
             case R.id.tab_menu_area:
+                clearAreaPoint();
                 setSelected();
                 area.setSelected(true);
                 replaceFragment(new AreaFragment());
                 break;
             case R.id.tab_menu_equipment:
+                clearEquipmentPoint();
                 setSelected();
                 equipment.setSelected(true);
                 replaceFragment(new EquipmentFragment());
                 break;
             case R.id.tab_menu_base_station:
+                clearBaseStationPoint();
                 setSelected();
                 baseStation.setSelected(true);
                 replaceFragment(new BaseStationFragment());
@@ -168,6 +172,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         equipmentPoint.setVisibility(View.VISIBLE);
         baseStationPoint.setVisibility(View.VISIBLE);
     }
+
+
+    private void clearPoint(){
+        overviewPoint.setVisibility(View.INVISIBLE);
+        areaPoint.setVisibility(View.INVISIBLE);
+        equipmentPoint.setVisibility(View.INVISIBLE);
+        baseStationPoint.setVisibility(View.INVISIBLE);
+    }
+
+    private void clearOverviewPoint(){
+        overviewPoint.setVisibility(View.INVISIBLE);
+    }
+
+    private void clearAreaPoint(){
+        areaPoint.setVisibility(View.INVISIBLE);
+    }
+
+    private void clearEquipmentPoint(){
+        equipmentPoint.setVisibility(View.INVISIBLE);
+    }
+
+    private void clearBaseStationPoint(){
+        baseStationPoint.setVisibility(View.INVISIBLE);
+    }
+
 
     private void setgraphicData()
     {

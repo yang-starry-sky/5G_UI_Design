@@ -2,6 +2,7 @@ package com.myapplication.UIDesign.BaseStation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +89,22 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
         holder.operatingStatus.setText(baseStationItem.getOperatingStatus());
         holder.deploymentStatus.setText(baseStationItem.getDeploymentStatus());
         holder.time.setText(baseStationItem.getTime());
+        String deploymentStatu=baseStationItem.getDeploymentStatus();
+        if(deploymentStatu.equals("部署状态   Failure"))
+            holder.deploymentStatus.setTextColor(android.graphics.Color.RED);
+        else if(deploymentStatu.equals("部署状态   Online"))
+            holder.deploymentStatus.setTextColor(Color.parseColor("#03DAC5"));
+        else if(deploymentStatu.equals("部署状态   Planning"))
+            holder.deploymentStatus.setTextColor(Color.BLUE);
+
+        String operatingStatu=baseStationItem.getOperatingStatus();
+        if(operatingStatu.equals("运行状态   Failure"))
+            holder.operatingStatus.setTextColor(android.graphics.Color.RED);
+        else if(operatingStatu.equals("运行状态   Normal"))
+            holder.operatingStatus.setTextColor(Color.parseColor("#03DAC5"));
+        else if(operatingStatu.equals("运行状态   Waiting"))
+            holder.operatingStatus.setTextColor(Color.YELLOW);
+        System.out.println(deploymentStatu+" "+operatingStatu);
 
     }
 
