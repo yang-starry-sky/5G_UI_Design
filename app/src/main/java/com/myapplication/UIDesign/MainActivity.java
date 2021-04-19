@@ -22,6 +22,7 @@ import com.myapplication.UIDesign.Database.Graph;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
 import com.myapplication.UIDesign.Equipment.EquipmentInfoItem;
 import com.myapplication.UIDesign.Equipment.EquipmentItem;
+import com.myapplication.UIDesign.Notification.CircularRequest;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
 import com.myapplication.UIDesign.Overview.GraphicInfoItem;
 //import com.myapplication.UIDesign.Utils.DataUtility;
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initTabMenu();
         overview.setSelected(true);
         replaceFragment(new OverviewFragment());
+
+
     }
 
     /**
@@ -189,6 +192,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         baseStationPoint.setVisibility(View.VISIBLE);
     }
 
+    private void setOverviewPoint(){
+        overviewPoint.setVisibility(View.VISIBLE);
+    }
+
+    private void setAreaPoint(){
+        areaPoint.setVisibility(View.VISIBLE);
+    }
+
+    private void setEquipmentPoint(){
+        equipmentPoint.setVisibility(View.VISIBLE);
+    }
+
+    private void setBaseStationPoint(){
+        baseStationPoint.setVisibility(View.VISIBLE);
+    }
 
     private void clearPoint(){
         overviewPoint.setVisibility(View.INVISIBLE);
