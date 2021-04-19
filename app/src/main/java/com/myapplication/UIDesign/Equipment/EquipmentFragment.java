@@ -19,6 +19,7 @@ import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.BaseStation.BaseStationItemAdapter;
 import com.myapplication.UIDesign.Database.Equipment;
 import com.myapplication.UIDesign.R;
+import com.myapplication.UIDesign.Utils.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -62,7 +63,7 @@ public class EquipmentFragment extends Fragment {
     private List<Equipment> equipmentList;
     public void InitEquipmentItems(){
         equipmentList = DataSupport.findAll(Equipment.class);
-        if(equipmentList.size() > 0){
+        if(!Utility.netWorkCheck(this.getContext())){ //没联网则用数据库数据
             equipmentItems.clear();
             for(Equipment equipment : equipmentList){
                 equipmentItems.add(equipment);

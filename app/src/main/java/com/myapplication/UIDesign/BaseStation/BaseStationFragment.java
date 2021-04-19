@@ -20,6 +20,7 @@ import com.myapplication.UIDesign.Database.BaseStation;
 import com.myapplication.UIDesign.Database.Equipment;
 import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.R;
+import com.myapplication.UIDesign.Utils.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -77,7 +78,7 @@ public class BaseStationFragment extends Fragment {
 
         baseStationList = DataSupport.findAll(BaseStation.class);
         sendRequestWithHttpURLConnection();
-        if(baseStationList.size() > 0){
+        if(!Utility.netWorkCheck(this.getContext())){ //没联网则用数据库数据
             baseStationItems.clear();
             for(BaseStation baseStation : baseStationList){
                 baseStationItems.add(baseStation);
