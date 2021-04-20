@@ -86,22 +86,26 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BaseStation baseStationItem=mbaseStationItems.get(position);
         holder.address.setText(baseStationItem.getAddress());
+        holder.address.setTextColor(Color.BLACK);
         holder.operatingStatus.setText(baseStationItem.getOperatingStatus());
+        holder.operatingStatus.setTextColor(Color.BLACK);
         holder.deploymentStatus.setText(baseStationItem.getDeploymentStatus());
+        holder.deploymentStatus.setTextColor(Color.BLACK);
         holder.time.setText(baseStationItem.getTime());
+        holder.time.setTextColor(Color.BLACK);
         String deploymentStatu=baseStationItem.getDeploymentStatus();
         if(deploymentStatu.equals("部署状态   Failure"))
-            holder.deploymentStatus.setTextColor(android.graphics.Color.RED);
+            holder.deploymentStatus.setTextColor(Color.parseColor("#ee1c25"));
         else if(deploymentStatu.equals("部署状态   Online"))
-            holder.deploymentStatus.setTextColor(Color.parseColor("#03DAC5"));
+            holder.deploymentStatus.setTextColor(Color.parseColor("#3DCCA6"));
         else if(deploymentStatu.equals("部署状态   Planning"))
             holder.deploymentStatus.setTextColor(Color.BLUE);
 
         String operatingStatu=baseStationItem.getOperatingStatus();
         if(operatingStatu.equals("运行状态   Failure"))
-            holder.operatingStatus.setTextColor(android.graphics.Color.RED);
+            holder.operatingStatus.setTextColor(Color.parseColor("#ee1c25"));
         else if(operatingStatu.equals("运行状态   Normal"))
-            holder.operatingStatus.setTextColor(Color.parseColor("#03DAC5"));
+            holder.operatingStatus.setTextColor(Color.parseColor("#3DCCA6"));
         else if(operatingStatu.equals("运行状态   Waiting"))
             holder.operatingStatus.setTextColor(Color.YELLOW);
         System.out.println(deploymentStatu+" "+operatingStatu);
