@@ -19,6 +19,7 @@ import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.Database.BaseStation;
 import com.myapplication.UIDesign.Database.Equipment;
 //import com.myapplication.UIDesign.Equipment.EquipmentItem;
+import com.myapplication.UIDesign.Divider.RecycleViewDivider;
 import com.myapplication.UIDesign.R;
 import com.myapplication.UIDesign.Utils.Utility;
 
@@ -55,14 +56,15 @@ public class BaseStationFragment extends Fragment {
         InitBaseStationItems();//信息初始化，可以拓展成接口
         //对信息的展示
         try {
-            Thread.sleep(100);
+            Thread.sleep(150);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.base_station_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
+        recyclerView.addItemDecoration(new RecycleViewDivider(view.getContext(),LinearLayoutManager.HORIZONTAL,
+                10,getResources().getColor(R.color.lavender)));
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(baseStationItemAdapter);
         getActivity().setTitle("基站");//改变标题
         return view;

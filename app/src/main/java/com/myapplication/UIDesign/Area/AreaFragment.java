@@ -50,8 +50,7 @@ import static android.content.ContentValues.TAG;
 public class AreaFragment extends Fragment {
     RecyclerView recyclerView;
     AreaActivityItemAdapter adapter;
-
-
+    
     private List<Area> areaActivityItemList=new ArrayList<>();//主界面信息
 
     @Override
@@ -67,16 +66,9 @@ public class AreaFragment extends Fragment {
         InitAreaItems();
         //对信息的展示
 
-
         getActivity().setTitle("区域");//改变标题
         return view;
     }
-
-
-
-
-
-
 
     /**
      * 简单地初始化信息
@@ -93,7 +85,7 @@ public class AreaFragment extends Fragment {
         }else{
             sendRequestWithHttpURLConnection();
             try {
-                Thread.sleep(100);
+                Thread.sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

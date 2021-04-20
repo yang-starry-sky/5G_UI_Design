@@ -33,7 +33,7 @@ public class BaseStationInfoActivity extends AppCompatActivity {
         getBaseStationInfoItem(address);//根据地址获取详细信息，可拓展为接口
         this.setTitle(address);
         try {
-            Thread.sleep(100);
+            Thread.sleep(150);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -74,7 +74,7 @@ public class EquipmentFragment extends Fragment {
         } else {
             sendRequestWithHttpURLConnection();
             try {
-                Thread.sleep(100);
+                Thread.sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -93,7 +93,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
         holder.deploymentStatus.setTextColor(Color.BLACK);
         holder.time.setText(baseStationItem.getTime());
         holder.time.setTextColor(Color.BLACK);
-        //配色
+        /*//配色
         switch(position%3){
             case 0:holder.itemView.setBackgroundColor(Color.parseColor("#FFF0F5"));
                 break;
@@ -101,22 +101,22 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
                 break;
             case 2:holder.itemView.setBackgroundColor(Color.parseColor("#F0FFFF"));
                 break;
-        }
+        }*/
         String deploymentStatu=baseStationItem.getDeploymentStatus();
         if(deploymentStatu.equals("部署状态   Failure"))
-            holder.deploymentStatus.setTextColor(Color.parseColor("#ee1c25"));
+            holder.deploymentStatus.setTextColor(Color.parseColor("#FA8072"));
         else if(deploymentStatu.equals("部署状态   Online"))
             holder.deploymentStatus.setTextColor(Color.parseColor("#3DCCA6"));
         else if(deploymentStatu.equals("部署状态   Planning"))
-            holder.deploymentStatus.setTextColor(Color.BLUE);
+            holder.deploymentStatus.setTextColor(Color.parseColor("#BA55D3"));
 
         String operatingStatu=baseStationItem.getOperatingStatus();
         if(operatingStatu.equals("运行状态   Failure"))
-            holder.operatingStatus.setTextColor(Color.parseColor("#ee1c25"));
+            holder.operatingStatus.setTextColor(Color.parseColor("#FA8072"));
         else if(operatingStatu.equals("运行状态   Normal"))
             holder.operatingStatus.setTextColor(Color.parseColor("#3DCCA6"));
         else if(operatingStatu.equals("运行状态   Waiting"))
-            holder.operatingStatus.setTextColor(Color.YELLOW);
+            holder.operatingStatus.setTextColor(Color.parseColor("#FFDAB9"));
         //System.out.println(deploymentStatu+" "+operatingStatu);
 
     }
