@@ -93,6 +93,15 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
         holder.deploymentStatus.setTextColor(Color.BLACK);
         holder.time.setText(baseStationItem.getTime());
         holder.time.setTextColor(Color.BLACK);
+        //配色
+        switch(position%3){
+            case 0:holder.itemView.setBackgroundColor(Color.parseColor("#FFF0F5"));
+                break;
+            case 1:holder.itemView.setBackgroundColor(Color.parseColor("#E6E6FA"));
+                break;
+            case 2:holder.itemView.setBackgroundColor(Color.parseColor("#F0FFFF"));
+                break;
+        }
         String deploymentStatu=baseStationItem.getDeploymentStatus();
         if(deploymentStatu.equals("部署状态   Failure"))
             holder.deploymentStatus.setTextColor(Color.parseColor("#ee1c25"));
@@ -108,7 +117,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
             holder.operatingStatus.setTextColor(Color.parseColor("#3DCCA6"));
         else if(operatingStatu.equals("运行状态   Waiting"))
             holder.operatingStatus.setTextColor(Color.YELLOW);
-        System.out.println(deploymentStatu+" "+operatingStatu);
+        //System.out.println(deploymentStatu+" "+operatingStatu);
 
     }
 

@@ -62,8 +62,6 @@ public class BaseStationFragment extends Fragment {
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.base_station_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        //System.out.println(baseStationItems.get(0).getAddress());
-
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(baseStationItemAdapter);
         getActivity().setTitle("基站");//改变标题
@@ -120,21 +118,6 @@ public class BaseStationFragment extends Fragment {
      * @param jsonData 服务器返回的json格式数据
      */
     private void parseJsonWithJsonObject(String jsonData){
-//        try {
-//            JSONArray jsonArray=new JSONArray(jsonData);
-//            for(int i=0;i<jsonArray.length();i++){
-//                JSONObject jsonObject=jsonArray.getJSONObject(i);
-//                String address=jsonObject.getString("address");
-//                String deploymentStatus=jsonObject.getString("deploymentStatus");
-//                String operatingStatus=jsonObject.getString("operatingStatus");
-//                String time=jsonObject.getString("time");
-//                BaseStationItem baseStationItem=new BaseStationItem(address,deploymentStatus,operatingStatus,time);
-//                baseStationItems.add(baseStationItem);
-//                //System.out.println(i+" "+baseStationItem.getAddress());
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
         Gson gson=new Gson();
         List<BaseStation> baseStationItems1=gson.fromJson(jsonData, new TypeToken<List<BaseStation>>(){}.getType());
         baseStationItems=baseStationItems1;
