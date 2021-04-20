@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="15dp">
-
-
+    android:background="@color/white"
+    >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
 
             <Button
                 android:id="@+id/area_firstcharbackgroud_button"
-                android:layout_marginLeft="40dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:textSize="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="24sp"
                 android:textColor="@color/white"
+                android:typeface="sans"
                 android:background="@drawable/area_firstcharbackground"
-                android:backgroundTint="@color/aqua"
-                />
+                android:backgroundTint="@color/itemColor"
+                android:layout_marginStart="20dp"
+                tools:targetApi="lollipop" />
 
             <TextView
                 android:id="@+id/area_areaTitle_value"
+                android:typeface="sans"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="3dp"
                 android:paddingLeft="20dp"
-                android:textSize="25dp"
-                android:visibility="visible" />
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:visibility="visible"
+                android:paddingStart="20dp" />
         </LinearLayout>
 
 
@@ -42,13 +49,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:baselineAligned="false"
+        >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="5dp">
 
 
         <TextView
@@ -57,26 +66,32 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
+            android:typeface="sans"
             android:text="@string/modify_time"
-            android:textSize="17sp" />
+            android:textSize="16sp"
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:id="@+id/area_modification_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create"
+            android:typeface="sans"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:textSize="17sp" />
+            android:textSize="16sp"
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:id="@+id/area_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
+            android:typeface="sans"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:textSize="17sp" />
+            android:textSize="16sp"
+            android:layout_marginStart="10dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -89,14 +104,16 @@
 
 
 
-
         <TextView
             android:id="@+id/area_modification_time_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:textSize="17sp" />
+            android:typeface="sans"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp" />
 
         <TextView
             android:id="@+id/area_creator_value"
@@ -104,7 +121,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:textSize="17sp" />
+            android:typeface="sans"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp" />
 
         <TextView
             android:id="@+id/area_description_value"
@@ -112,13 +132,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:textSize="17sp" />
-    </LinearLayout>
+            android:typeface="sans"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp" />
     </LinearLayout>
 
-    <View
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/lightgrey"/>
-
+        android:layout_height="10dp"
+        android:background="@color/whitesmoke">
+    </LinearLayout>
 </LinearLayout>

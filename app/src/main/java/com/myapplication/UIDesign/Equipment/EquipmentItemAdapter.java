@@ -2,6 +2,7 @@ package com.myapplication.UIDesign.Equipment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,9 +77,13 @@ public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdap
 //        Equipment equipmentItem;
 //                equipmentItem=equipmentItems.get(position);
         holder.address.setText(equipmentItems.get(position).getName());
+        holder.address.setTextColor(Color.BLACK);
         holder.operatingStatus.setText(equipmentItems.get(position).getOperatingStatus());
+        holder.operatingStatus.setTextColor(Color.BLACK);
         holder.onlineStatus.setText(equipmentItems.get(position).getOnlineStatus());
+        holder.onlineStatus.setTextColor(Color.BLACK);
         holder.time.setText(equipmentItems.get(position).getTime());
+        holder.time.setTextColor(Color.BLACK);
 
     }
 
