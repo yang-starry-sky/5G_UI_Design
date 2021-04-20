@@ -93,6 +93,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
         holder.deploymentStatus.setTextColor(Color.BLACK);
         holder.time.setText(baseStationItem.getTime());
         holder.time.setTextColor(Color.BLACK);
+
         /*//配色
         switch(position%3){
             case 0:holder.itemView.setBackgroundColor(Color.parseColor("#FFF0F5"));
