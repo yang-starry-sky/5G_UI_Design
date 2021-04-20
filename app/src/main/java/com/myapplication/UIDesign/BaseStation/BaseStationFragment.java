@@ -55,11 +55,6 @@ public class BaseStationFragment extends Fragment {
 
         InitBaseStationItems();//信息初始化，可以拓展成接口
         //对信息的展示
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.base_station_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         //recyclerView.addItemDecoration(new RecycleViewDivider(view.getContext(),LinearLayoutManager.HORIZONTAL,
@@ -86,11 +81,6 @@ public class BaseStationFragment extends Fragment {
 
         }else{
             sendRequestWithHttpURLConnection();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
         baseStationItemAdapter.notifyDataSetChanged();
         baseStationItemAdapter.setmBaseStationItemList(baseStationItems);
@@ -99,7 +89,7 @@ public class BaseStationFragment extends Fragment {
      * 向服务器发送初始化请求
      */
     private void sendRequestWithHttpURLConnection(){
-        new Thread(new Runnable() {
+        Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -113,7 +103,13 @@ public class BaseStationFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * 解析json格式数据

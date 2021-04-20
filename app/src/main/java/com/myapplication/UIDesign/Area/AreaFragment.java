@@ -84,11 +84,6 @@ public class AreaFragment extends Fragment {
             }
         }else{
             sendRequestWithHttpURLConnection();
-            try {
-                Thread.sleep(150);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
         }
         adapter.notifyDataSetChanged();
@@ -99,7 +94,7 @@ public class AreaFragment extends Fragment {
      * 向服务器发送初始化请求
      */
     private void sendRequestWithHttpURLConnection(){
-        new Thread(new Runnable() {
+        Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -113,7 +108,13 @@ public class AreaFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

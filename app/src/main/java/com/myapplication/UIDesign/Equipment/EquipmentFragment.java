@@ -73,11 +73,6 @@ public class EquipmentFragment extends Fragment {
             }
         } else {
             sendRequestWithHttpURLConnection();
-            try {
-                Thread.sleep(150);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
         equipmentItemAdapter.notifyDataSetChanged();
         equipmentItemAdapter.setmEquipmentItemList(equipmentItems);
@@ -86,7 +81,7 @@ public class EquipmentFragment extends Fragment {
      * 向服务器发送初始化请求
      */
     private void sendRequestWithHttpURLConnection(){
-        new Thread(new Runnable() {
+        Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -100,7 +95,13 @@ public class EquipmentFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * 解析json格式数据

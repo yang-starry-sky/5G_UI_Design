@@ -16,7 +16,6 @@ public class AreaActivityItem {
         this.creator=creator;
         this.description=description;
         this.firstchar = areaTitle.charAt(0);  //从areaTitle中获取首字
-
     }
 
     public String getFirstchar() {
