@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.myapplication.UIDesign.Database.Graph;
 import com.myapplication.UIDesign.R;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.github.mikephil.charting.formatter.IValueFormatter;
@@ -21,10 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 import com.github.mikephil.charting.data.Entry;
 
+import org.litepal.crud.DataSupport;
+
+import static android.content.ContentValues.TAG;
+
 import static com.myapplication.UIDesign.MainActivity.graphicdata;
 
 
 class myValueFormatter implements IValueFormatter {
+
     @Override
     public String getFormattedValue(float v, Entry entry, int i, ViewPortHandler viewPortHandler) {
         if(Math.abs(v - 100.001) <0.0001) return "";
@@ -34,7 +41,7 @@ class myValueFormatter implements IValueFormatter {
 
 public class histogram extends Fragment {
 
-
+//    Graph graphicdata = DataSupport.findAll(Graph.class).get(0);
 
 
     private HorizontalBarChart barHor;
@@ -45,7 +52,7 @@ public class histogram extends Fragment {
     private BarData barData;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-
+        Log.e(TAG, "onCreateView: !!!" + graphicdata );
         view = inflater.inflate(R.layout.histogram_layout,container,false);
         initView();
         barData = getbarData();

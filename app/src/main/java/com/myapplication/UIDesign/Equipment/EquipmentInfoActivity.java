@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.myapplication.UIDesign.BaseStation.BaseStationInfoItem;
+import com.myapplication.UIDesign.Database.Equipment;
 import com.myapplication.UIDesign.R;
 
 
@@ -74,7 +75,7 @@ public class EquipmentInfoActivity extends AppCompatActivity {
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
                     System.out.println(responseData);
-                    //parseJsonWithJsonObject(responseData);
+                    parseJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }

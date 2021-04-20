@@ -3,6 +3,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-
+    <color name="myBarColor">#FFFFFF</color>
+    <color name="titleColor">#000000</color>
+    <color name="itemColor">#6fcbb0</color>
 
 </resources>

@@ -2,6 +2,7 @@ package com.myapplication.UIDesign.Equipment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
-import com.myapplication.UIDesign.Equipment.EquipmentItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+import com.myapplication.UIDesign.Database.Area;
+import com.myapplication.UIDesign.Database.Equipment;
+//import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.R;
 
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ import java.util.List;
  * 可进行拓展
  */
 public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdapter.ViewHolder>{
-    private List<EquipmentItem> equipmentItems=new ArrayList<>();
+    private List<Equipment> equipmentItems;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View itemView;
@@ -43,8 +46,12 @@ public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdap
         }
     }
 
-    public EquipmentItemAdapter(List<EquipmentItem> equipmentItems){
+    public EquipmentItemAdapter(List<Equipment> equipmentItems){
         this.equipmentItems=equipmentItems;
+    }
+    public void setmEquipmentItemList(List<Equipment> mEquipmentItemList){
+        this.equipmentItems= mEquipmentItemList;
+        this.notifyDataSetChanged();
     }
 
     @NonNull
@@ -56,7 +63,7 @@ public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdap
             @Override
             public void onClick(View view) {
                 int position=viewHolder.getAdapterPosition();
-                EquipmentItem equipmentItem=equipmentItems.get(position);
+                Equipment equipmentItem=equipmentItems.get(position);
                 Intent intent=new Intent("com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity");//
                 intent.putExtra("address",equipmentItem.getName());
                 ((Activity) view.getContext()).startActivity(intent);
@@ -67,11 +74,16 @@ public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        EquipmentItem equipmentItem=equipmentItems.get(position);
-        holder.address.setText(equipmentItem.getName());
-        holder.operatingStatus.setText(equipmentItem.getOperatingStatus());
-        holder.onlineStatus.setText(equipmentItem.getOnlineStatus());
-        holder.time.setText(equipmentItem.getTime());
+//        Equipment equipmentItem;
+//                equipmentItem=equipmentItems.get(position);
+        holder.address.setText(equipmentItems.get(position).getName());
+        holder.address.setTextColor(Color.BLACK);
+        holder.operatingStatus.setText(equipmentItems.get(position).getOperatingStatus());
+        holder.operatingStatus.setTextColor(Color.BLACK);
+        holder.onlineStatus.setText(equipmentItems.get(position).getOnlineStatus());
+        holder.onlineStatus.setTextColor(Color.BLACK);
+        holder.time.setText(equipmentItems.get(position).getTime());
+        holder.time.setTextColor(Color.BLACK);
 
     }
 

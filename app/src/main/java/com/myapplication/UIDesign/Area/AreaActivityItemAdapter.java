@@ -1,8 +1,10 @@
 package com.myapplication.UIDesign.Area;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +17,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.BaseStation.BaseStationItemAdapter;
+import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.R;
 
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityItemAdapter.ViewHolder> {
 
-    private List<AreaActivityItem> mAreaActivityItemList;
+    private List<Area> mAreaActivityItemList;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View itemView;
@@ -44,11 +49,11 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
         }
     }
 
-    public AreaActivityItemAdapter (List<AreaActivityItem> areaActivityItemList){
+    public AreaActivityItemAdapter (List<Area> areaActivityItemList){
         mAreaActivityItemList = areaActivityItemList;
     }
 
-    public void setmAreaActivityItemList(List<AreaActivityItem> mAreaActivityItemList) {
+    public void setmAreaActivityItemList(List<Area> mAreaActivityItemList) {
         this.mAreaActivityItemList = mAreaActivityItemList;
         this.notifyDataSetChanged();
     }
@@ -62,7 +67,13 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
             @Override
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
-                AreaActivityItem areaActivityItem=mAreaActivityItemList.get(position);
+                Area areaActivityItem;
+                if(position >= 0){
+                    areaActivityItem=mAreaActivityItemList.get(position);
+                } else {
+                    areaActivityItem = new Area();
+                }
+
                 Intent intent=new Intent("com.myapplication.UIDesign.Area.Area_Details");
                 intent.addCategory("com.myapplication.UIDesign.Area.Area_Details.MY_CATEGORY");
 
@@ -77,12 +88,14 @@ public class AreaActivityItemAdapter extends RecyclerView.Adapter<AreaActivityIt
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        AreaActivityItem areaActivityItem=mAreaActivityItemList.get(position);
+
+        Area areaActivityItem=mAreaActivityItemList.get(position);
         holder.areaTitle.setText(areaActivityItem.getAreaTitle());
         holder.firstCharBackground.setText(areaActivityItem.getFirstchar());
         holder.modificationTime.setText(areaActivityItem.getModificationTime());
         holder.creator.setText(areaActivityItem.getCreator());
         holder.description.setText(areaActivityItem.getDescription());
+
     }
 
     @Override

@@ -1,6 +1,8 @@
-package com.myapplication.UIDesign.Overview;
+package com.myapplication.UIDesign.Database;
 
-public class GraphicInfoItem {
+import org.litepal.crud.DataSupport;
+
+public class Graph extends DataSupport {
     private int equipmentonline;
     private int equipmentfailure;
     private int stationonline;
@@ -12,18 +14,6 @@ public class GraphicInfoItem {
     private int percent4;
     private int percent5;
 
-    public GraphicInfoItem(int equipmentonline, int equipmentfailure, int stationonline, int stationfailure, int stationplanning, int percent1, int percent2, int percent3, int percent4, int percent5){
-        this.equipmentfailure = equipmentfailure;
-        this.equipmentonline = equipmentonline;
-        this.stationonline = stationonline;
-        this.stationfailure = stationfailure;
-        this.stationplanning = stationplanning;
-        this.percent1 = percent1;
-        this.percent2 = percent2;
-        this.percent3 = percent3;
-        this.percent4 = percent4;
-        this.percent5 = percent5;
-    }
 
     public void setEquipmentfailure(int equipmentfailure) {
         this.equipmentfailure = equipmentfailure;

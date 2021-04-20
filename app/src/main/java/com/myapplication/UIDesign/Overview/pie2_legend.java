@@ -28,7 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /* 建立正方形色块*/
-public class pie2_legend extends ImageView {
+public class pie2_legend extends androidx.appcompat.widget.AppCompatImageView {
     public pie2_legend(Context context) {
         super(context);
     }
