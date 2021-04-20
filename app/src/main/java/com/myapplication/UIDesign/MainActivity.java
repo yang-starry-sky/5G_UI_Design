@@ -58,16 +58,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setgraphicData();//图形化数据传入接口
 
         //发请求
+        sendUpdateRequest();
         sendAreaRequest();
         sendBaseStationRequest();
         sendEquipmentRequest();
-        sendUpdateRequest();
 
-        try {
+
+        /*try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -301,7 +302,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendAreaRequest(){
-        new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -315,7 +316,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void parseAreaJsonWithJsonObject(String jsonData){
@@ -335,7 +342,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendBaseStationRequest(){
-        new Thread(new Runnable() {
+        Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -349,7 +356,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     private void parseBaseStationJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
@@ -368,7 +381,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendEquipmentRequest(){
-        new Thread(new Runnable() {
+        Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -382,7 +395,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     private void parseEquipmentJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
@@ -402,7 +421,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void sendUpdateRequest(){                        //请求JSON更新数据
-        new Thread(new Runnable() {
+        Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {                        //子线程
                 try {
@@ -416,18 +435,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();//注意这里
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void parseUpdateJsonWithJsonObject(String jsonData){//用于解析更新的JSON数据
         Gson gson=new Gson();
-        List<UpdateItem> updateList = new ArrayList<>();
         UpdateItem updateItem;
         updateItem=gson.fromJson(jsonData,UpdateItem.class);
         Message message=new Message();
         message.obj = updateItem;
         mHandler.sendMessage(message);                          //利用Handler将更新信息发回主线程
-
         }
 
     private void refreshPointAndNotification(UpdateItem updateItem){//该函数用于处理更新信息，必须在主线程中被调用，否则无效
