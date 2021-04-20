@@ -62,8 +62,8 @@ public class BaseStationFragment extends Fragment {
         }
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.base_station_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
-        recyclerView.addItemDecoration(new RecycleViewDivider(view.getContext(),LinearLayoutManager.HORIZONTAL,
-                10,getResources().getColor(R.color.lavender)));
+        //recyclerView.addItemDecoration(new RecycleViewDivider(view.getContext(),LinearLayoutManager.HORIZONTAL,
+                //10,getResources().getColor(R.color.lavender)));
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(baseStationItemAdapter);
         getActivity().setTitle("基站");//改变标题

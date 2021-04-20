@@ -50,7 +50,7 @@ import static android.content.ContentValues.TAG;
 public class AreaFragment extends Fragment {
     RecyclerView recyclerView;
     AreaActivityItemAdapter adapter;
-    
+
     private List<Area> areaActivityItemList=new ArrayList<>();//主界面信息
 
     @Override
@@ -61,7 +61,7 @@ public class AreaFragment extends Fragment {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new AreaActivityItemAdapter(areaActivityItemList);
-        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
         InitAreaItems();
         //对信息的展示
