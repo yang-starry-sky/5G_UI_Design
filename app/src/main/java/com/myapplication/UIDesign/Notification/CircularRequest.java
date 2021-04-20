@@ -20,7 +20,7 @@ public class CircularRequest {
     }
 
     public void run(){
-        timer.schedule(task,10000,10000);//10秒后开始，每10秒一次
+        timer.schedule(task,5000,5000);//10秒后开始，每60秒一次
     }
 
     public void onDestroy(){

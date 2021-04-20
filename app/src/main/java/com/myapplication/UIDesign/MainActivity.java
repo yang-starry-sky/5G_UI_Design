@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,6 +27,8 @@ import com.myapplication.UIDesign.Equipment.EquipmentInfoItem;
 
 import com.myapplication.UIDesign.Notification.CircularRequest;
 
+import com.myapplication.UIDesign.Notification.NotificationHelper;
+import com.myapplication.UIDesign.Notification.UpdateItem;
 import com.myapplication.UIDesign.Overview.OverviewFragment;
 import com.myapplication.UIDesign.Overview.GraphicInfoItem;
 //import com.myapplication.UIDesign.Utils.DataUtility;
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView overview,area,equipment,baseStation;
     private TextView overviewPoint,areaPoint,equipmentPoint,baseStationPoint;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sendAreaRequest();
         sendBaseStationRequest();
         sendEquipmentRequest();
-
-
+        sendUpdateRequest();
 
         try {
             Thread.sleep(100);
@@ -74,10 +78,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         bindView();
-        setPoint();//可拓展消息提示
+        //setPoint();//可拓展消息提示
         initTabMenu();
         overview.setSelected(true);
         replaceFragment(new OverviewFragment());
+        CircularRequest circularRequest = new CircularRequest(this);
+        circularRequest.run();
+
+        /**
+         * 主函数句柄,用于处理轮询消息
+         */
+        this.mHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                refreshPointAndNotification((UpdateItem) msg.obj);
+            }
+        };
 
 
     }
@@ -384,5 +401,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void sendUpdateRequest(){                        //请求JSON更新数据
+        new Thread(new Runnable() {
+            @Override
+            public void run() {                        //子线程
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder().url("http://121.36.85.175:80/update").build();
+                    Response response=client.newCall(request).execute();
+                    String responseData=response.body().string();
+                    System.out.println(responseData);
+                    parseUpdateJsonWithJsonObject(responseData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void parseUpdateJsonWithJsonObject(String jsonData){//用于解析更新的JSON数据
+        Gson gson=new Gson();
+        List<UpdateItem> updateList = new ArrayList<>();
+        UpdateItem updateItem;
+        updateItem=gson.fromJson(jsonData,UpdateItem.class);
+        Message message=new Message();
+        message.obj = updateItem;
+        mHandler.sendMessage(message);                          //利用Handler将更新信息发回主线程
+
+        }
+
+    private void refreshPointAndNotification(UpdateItem updateItem){//该函数用于处理更新信息，必须在主线程中被调用，否则无效
+        List<Integer> list;
+        String content = "";
+        if(updateItem.getStatus()==false){//没有更新，直接返回
+            return;
+        }
+        list= updateItem.getList();
+        for(int i=0;i<list.size();i++){//根据信息设置红点，并拼接通知内容字符串
+            switch (list.get(i)){
+                case 1:
+                    content = content + ",概览";
+                    setOverviewPoint();
+                    break;
+                case 2:
+                    content = content + ",区域";
+                    setAreaPoint();
+                    break;
+                case 3:
+                    content = content + ",设备";
+                    setEquipmentPoint();
+                    break;
+                case 4:
+                    content = content + ",基站";
+                    setBaseStationPoint();
+                    break;
+                default:break;
+            }
+        }
+        content =content+" 界面有数据更新";
+        content=content.substring(1);   //去掉第一个逗号
+        NotificationHelper helper;      //创建
+        helper = new NotificationHelper(MainActivity.this);  //实例化
+        helper.setTitle("通知");         //设置通知标题
+        helper.setContent(content);     //设置通知文本内容
+        helper.sendNotification();      //发送通知
+    }
 
 }

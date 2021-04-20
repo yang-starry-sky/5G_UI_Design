@@ -48,15 +48,15 @@ public class NotificationHelper {
         }
     }
 
-    void setContent(String content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
-    void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    void sendNotification(){
+    public void sendNotification(){
         //这里的第二个参数要和上面的第一个参数一样
         notification = new NotificationCompat.Builder(context, "1")
                 .setContentTitle(title)//设置标题
