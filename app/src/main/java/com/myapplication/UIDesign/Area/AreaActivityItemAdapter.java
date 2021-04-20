@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.BaseStation.BaseStationItemAdapter;
 import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.R;

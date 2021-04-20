@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.myapplication.UIDesign.BaseStation.BaseStationInfoItem;
+import com.myapplication.UIDesign.Database.Equipment;
 import com.myapplication.UIDesign.R;
 
 

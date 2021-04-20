@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.R;
 import com.myapplication.UIDesign.Utils.HttpUtil;
