@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.Area.AreaActivityItem;
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.BaseStation.BaseStationItemAdapter;
 import com.myapplication.UIDesign.Database.Equipment;
 import com.myapplication.UIDesign.R;
@@ -33,27 +33,30 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class EquipmentFragment extends Fragment {
-    private List<Equipment> equipmentItems = new ArrayList<>();
-    EquipmentItemAdapter equipmentItemAdapter =new EquipmentItemAdapter(equipmentItems);
+    private List<Equipment> equipmentItems = new ArrayList<>();;
+    EquipmentItemAdapter equipmentItemAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_equipment,container,false);
 
-        InitEquipmentItems();
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+//        try {
+//            Thread.sleep(100);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         //对信息的展示
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.equipment_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 //        equipmentItemAdapter=new EquipmentItemAdapter(equipmentItems);
+        equipmentItemAdapter =new EquipmentItemAdapter(equipmentItems);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(equipmentItemAdapter);
+        InitEquipmentItems();
         getActivity().setTitle("设备");//改变标题
+
         return view;
     }
 
@@ -105,7 +108,7 @@ public class EquipmentFragment extends Fragment {
      */
     private void parseJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
-        List<Equipment> equipmentItems1=gson.fromJson(jsonData,new TypeToken<List<EquipmentItem>>(){}.getType());
+        List<Equipment> equipmentItems1=gson.fromJson(jsonData,new TypeToken<List<Equipment>>(){}.getType());
         equipmentItems=equipmentItems1;
 
         //持久化

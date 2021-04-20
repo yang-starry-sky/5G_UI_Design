@@ -23,7 +23,7 @@ import java.util.List;
  * 基站主界面的Adapter，用来对recyclerview进行设置
  */
 public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItemAdapter.ViewHolder>{
-    private List<BaseStation> baseStationItems=new ArrayList<>();
+    private List<BaseStation> mbaseStationItems;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View itemView;
@@ -43,11 +43,11 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
     }
 
     public BaseStationItemAdapter(List<BaseStation> baseStationItems){
-        this.baseStationItems=baseStationItems;
+        mbaseStationItems=baseStationItems;
     }
 
     public void setmBaseStationItemList(List<BaseStation> mBaseStationItemList) {
-        this.baseStationItems = mBaseStationItemList;
+        this.mbaseStationItems = mBaseStationItemList;
         this.notifyDataSetChanged();
     }
 
@@ -60,7 +60,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
             @Override
             public void onClick(View view) {
                 int position=viewHolder.getAdapterPosition();
-                BaseStation baseStationItem=baseStationItems.get(position);
+                BaseStation baseStationItem=mbaseStationItems.get(position);
                 Intent intent=new Intent("com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity");
                 intent.putExtra("address",baseStationItem.getAddress());
                 ((Activity) view.getContext()).startActivity(intent);
@@ -84,7 +84,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BaseStation baseStationItem=baseStationItems.get(position);
+        BaseStation baseStationItem=mbaseStationItems.get(position);
         holder.address.setText(baseStationItem.getAddress());
         holder.operatingStatus.setText(baseStationItem.getOperatingStatus());
         holder.deploymentStatus.setText(baseStationItem.getDeploymentStatus());
@@ -110,7 +110,7 @@ public class BaseStationItemAdapter extends RecyclerView.Adapter<BaseStationItem
 
     @Override
     public int getItemCount() {
-        return baseStationItems.size();
+        return mbaseStationItems.size();
     }
 
 }

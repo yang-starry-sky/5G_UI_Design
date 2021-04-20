@@ -18,7 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.Database.BaseStation;
 import com.myapplication.UIDesign.Database.Equipment;
-import com.myapplication.UIDesign.Equipment.EquipmentItem;
+//import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.R;
 import com.myapplication.UIDesign.Utils.Utility;
 
@@ -136,7 +136,7 @@ public class BaseStationFragment extends Fragment {
 //            e.printStackTrace();
 //        }
         Gson gson=new Gson();
-        List<BaseStation> baseStationItems1=gson.fromJson(jsonData, new TypeToken<List<BaseStationItem>>(){}.getType());
+        List<BaseStation> baseStationItems1=gson.fromJson(jsonData, new TypeToken<List<BaseStation>>(){}.getType());
         baseStationItems=baseStationItems1;
 
         //持久化

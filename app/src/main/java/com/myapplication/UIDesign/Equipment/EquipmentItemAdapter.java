@@ -11,10 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.Database.Equipment;
-import com.myapplication.UIDesign.Equipment.EquipmentItem;
+//import com.myapplication.UIDesign.Equipment.EquipmentItem;
 import com.myapplication.UIDesign.R;
 
 import java.util.ArrayList;
@@ -73,11 +73,12 @@ public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Equipment equipmentItem=equipmentItems.get(position);
-        holder.address.setText(equipmentItem.getName());
-        holder.operatingStatus.setText(equipmentItem.getOperatingStatus());
-        holder.onlineStatus.setText(equipmentItem.getOnlineStatus());
-        holder.time.setText(equipmentItem.getTime());
+//        Equipment equipmentItem;
+//                equipmentItem=equipmentItems.get(position);
+        holder.address.setText(equipmentItems.get(position).getName());
+        holder.operatingStatus.setText(equipmentItems.get(position).getOperatingStatus());
+        holder.onlineStatus.setText(equipmentItems.get(position).getOnlineStatus());
+        holder.time.setText(equipmentItems.get(position).getTime());
 
     }
 

@@ -14,15 +14,17 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myapplication.UIDesign.Area.AreaFragment;
 import com.myapplication.UIDesign.BaseStation.BaseStationFragment;
-import com.myapplication.UIDesign.BaseStation.BaseStationItem;
+//import com.myapplication.UIDesign.BaseStation.BaseStationItem;
 import com.myapplication.UIDesign.Database.Area;
 import com.myapplication.UIDesign.Database.BaseStation;
 import com.myapplication.UIDesign.Database.Equipment;
 import com.myapplication.UIDesign.Database.Graph;
 import com.myapplication.UIDesign.Equipment.EquipmentFragment;
+
 import com.myapplication.UIDesign.Equipment.EquipmentInfoItem;
-import com.myapplication.UIDesign.Equipment.EquipmentItem;
+
 import com.myapplication.UIDesign.Notification.CircularRequest;
+
 import com.myapplication.UIDesign.Overview.OverviewFragment;
 import com.myapplication.UIDesign.Overview.GraphicInfoItem;
 //import com.myapplication.UIDesign.Utils.DataUtility;
@@ -334,7 +336,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void parseBaseStationJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
-        baseStationList=gson.fromJson(jsonData, new TypeToken<List<BaseStationItem>>(){}.getType());
+        baseStationList=gson.fromJson(jsonData, new TypeToken<List<BaseStation>>(){}.getType());
 
 
         //持久化
@@ -367,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void parseEquipmentJsonWithJsonObject(String jsonData){
         Gson gson=new Gson();
-         equipmentList=gson.fromJson(jsonData,new TypeToken<List<EquipmentItem>>(){}.getType());
+         equipmentList=gson.fromJson(jsonData,new TypeToken<List<Equipment>>(){}.getType());
 
 
         //持久化
