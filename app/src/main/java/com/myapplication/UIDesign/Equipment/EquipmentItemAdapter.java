@@ -64,7 +64,7 @@ public class EquipmentItemAdapter extends RecyclerView.Adapter<EquipmentItemAdap
             public void onClick(View view) {
                 int position=viewHolder.getAdapterPosition();
                 Equipment equipmentItem=equipmentItems.get(position);
-                Intent intent=new Intent("com.myapplication.UIDesign.BaseStation.BaseStationInfoActivity");//
+                Intent intent=new Intent("com.myapplication.UIDesign.Equipment.EquipmentInfoActivity");//
                 intent.putExtra("address",equipmentItem.getName());
                 ((Activity) view.getContext()).startActivity(intent);
             }

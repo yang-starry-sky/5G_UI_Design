@@ -494,6 +494,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         helper.setTitle("通知");         //设置通知标题
         helper.setContent(content);     //设置通知文本内容
         helper.sendNotification();      //发送通知
+
+
     }
 
 }

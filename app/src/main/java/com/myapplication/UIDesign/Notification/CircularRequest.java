@@ -30,8 +30,6 @@ public class CircularRequest {
         if(task!=null){
             task.cancel();
         }
-
-
     }
 
 }

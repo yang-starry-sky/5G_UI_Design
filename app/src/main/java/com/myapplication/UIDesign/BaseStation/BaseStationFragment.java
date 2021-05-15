@@ -72,7 +72,6 @@ public class BaseStationFragment extends Fragment {
     public void InitBaseStationItems() {
 
         baseStationList = DataSupport.findAll(BaseStation.class);
-        sendRequestWithHttpURLConnection();
         if(!Utility.netWorkCheck(this.getContext())){ //没联网则用数据库数据
             baseStationItems.clear();
             for(BaseStation baseStation : baseStationList){

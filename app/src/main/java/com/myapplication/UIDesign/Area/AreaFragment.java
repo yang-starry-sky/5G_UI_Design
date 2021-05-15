@@ -56,15 +56,15 @@ public class AreaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.area_fragment, container,false);  //获取area_fragment布局
-        //信息初始化，可以拓展成接口
+
         recyclerView=(RecyclerView)view.findViewById(R.id.area_recycler_view);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new AreaActivityItemAdapter(areaActivityItemList);
         //recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
+        //信息初始化，可以拓展成接口
         InitAreaItems();
-        //对信息的展示
 
         getActivity().setTitle("区域");//改变标题
         return view;
@@ -76,7 +76,6 @@ public class AreaFragment extends Fragment {
     private List<Area> areaList;
     public void InitAreaItems(){
         areaList = DataSupport.findAll(Area.class);
-        sendRequestWithHttpURLConnection();
         if(!Utility.netWorkCheck(this.getContext())){ //没联网则用数据库数据
             areaActivityItemList.clear();
             for(Area area : areaList){
@@ -84,7 +83,6 @@ public class AreaFragment extends Fragment {
             }
         }else{
             sendRequestWithHttpURLConnection();
-
         }
         adapter.notifyDataSetChanged();
         adapter.setmAreaActivityItemList(areaActivityItemList);

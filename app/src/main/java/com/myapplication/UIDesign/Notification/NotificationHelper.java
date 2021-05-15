@@ -37,7 +37,7 @@ public class NotificationHelper {
 
     public NotificationHelper(Context context) {
         this.context = context;
-        manager = (NotificationManager) context.getSystemService("notification");
+        manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                                 //高版本需要渠道
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

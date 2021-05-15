@@ -115,45 +115,4 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"/>
     </TableRow>
-
-    <TableRow>
-        <TextView
-            android:id="@+id/equipment_info_UNIInterface_label"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:text="UNIInterface"/>
-
-        <TextView
-            android:id="@+id/equipment_info_UNIInterface"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"/>
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:id="@+id/equipment_info_Remarks_label"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:text="备注"/>
-
-        <TextView
-            android:id="@+id/equipment_info_Remarks"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp" />
-    </TableRow>
-
-    <Button
-        android:id="@+id/equipment_info_deploy"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-        android:text="部署"/>
 </TableLayout>

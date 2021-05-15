@@ -53,7 +53,7 @@ public class EquipmentInfoActivity extends AppCompatActivity {
 
     /**
      * 根据地址获取详细信息，可拓展为接口
-     * @param address 基站地址
+     * @param address 设备地址
      */
     private void getEquipmentInfoItem(String address){
         sendRequestWithHttpURLConnection(address);
@@ -96,23 +96,19 @@ public class EquipmentInfoActivity extends AppCompatActivity {
      * 在设备信息展示页面上显示具体信息
      */
     private void showInfo(){
-        TextView textView=(TextView)findViewById(R.id.base_station_info_city);
+        TextView textView=(TextView)findViewById(R.id.equipment_info_city);
         textView.setText(equipmentInfoItem.getCity());
-        textView=(TextView)findViewById(R.id.base_station_info_community);
+        textView=(TextView)findViewById(R.id.equipment_info_community);
         textView.setText(equipmentInfoItem.getCommunity());
-        textView=(TextView)findViewById(R.id.base_station_info_deploymentStatus);
+        textView=(TextView)findViewById(R.id.equipment_info_deploymentStatus);
         textView.setText(equipmentInfoItem.getDeploymentStatus());
-        textView=(TextView)findViewById(R.id.base_station_info_operatingStatus);
+        textView=(TextView)findViewById(R.id.equipment_info_operatingStatus);
         textView.setText(equipmentInfoItem.getOperatingStatus());
-        textView=(TextView)findViewById(R.id.base_station_info_Remarks);
-        textView.setText(equipmentInfoItem.getRemarks());
-        textView=(TextView)findViewById(R.id.base_station_info_time);
+        textView=(TextView)findViewById(R.id.equipment_info_time);
         textView.setText(equipmentInfoItem.getTime());
-        textView=(TextView)findViewById(R.id.base_station_info_type);
+        textView=(TextView)findViewById(R.id.equipment_info_type);
         textView.setText(equipmentInfoItem.getType());
-        textView=(TextView)findViewById(R.id.base_station_info_UNIInterface);
-        textView.setText(equipmentInfoItem.getUNIInterface());
-        textView=(TextView)findViewById(R.id.base_station_info_vpnName);
+        textView=(TextView)findViewById(R.id.equipment_info_vpnName);
         textView.setText(equipmentInfoItem.getVpnName());
     }
 }
